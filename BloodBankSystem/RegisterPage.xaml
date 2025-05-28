@@ -1,0 +1,63 @@
+﻿<Window x:Class="BloodBankSystem.RegisterPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Register" WindowState="Maximized" Height="440" Width="855">
+    <Grid Margin="40">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Title -->
+            <RowDefinition Height="30"/>
+            <!-- Spacer -->
+            <RowDefinition Height="Auto"/>
+            <!-- Row 1 -->
+            <RowDefinition Height="Auto"/>
+            <!-- Row 2 -->
+            <RowDefinition Height="Auto"/>
+            <!-- Row 3 -->
+            <RowDefinition Height="Auto"/>
+            <!-- Row 4 -->
+            <RowDefinition Height="Auto"/>
+            <!-- Row 5 -->
+            <RowDefinition Height="50"/>
+            <!-- Spacer -->
+            <RowDefinition Height="Auto"/>
+            <!-- Save Button -->
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Title -->
+        <Label Grid.Row="0" Grid.ColumnSpan="4" Content="Register" FontSize="32" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+        <!-- Email -->
+        <Label Grid.Row="2" Grid.Column="0" Content="Email" FontSize="18" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtEmail" FontSize="18" Height="30"/>
+
+        <!-- Phone Number -->
+        <Label Grid.Row="2" Grid.Column="2" Content="PhoneNumber" FontSize="18" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="3" x:Name="txtPhoneNumber" FontSize="18" Height="30"/>
+
+        <!-- Name -->
+        <Label Grid.Row="3" Grid.Column="0" Content="Name" FontSize="18" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtName" FontSize="18" Height="30"/>
+
+        <!-- Address -->
+        <Label Grid.Row="3" Grid.Column="2" Content="Address" FontSize="18" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="3" Grid.Column="3" x:Name="txtAddress" FontSize="18" Height="30"/>
+
+        <!-- Password -->
+        <Label Grid.Row="4" Grid.Column="0" Content="Password" FontSize="18" VerticalAlignment="Center"/>
+        <PasswordBox Grid.Row="4" Grid.Column="1" x:Name="txtPassword" FontSize="18" Height="30"/>
+
+        <!-- Confirm Password -->
+        <Label Grid.Row="5" Grid.Column="0" Content="Confirm Password" FontSize="18" VerticalAlignment="Center"/>
+        <PasswordBox Grid.Row="5" Grid.Column="1" x:Name="txtConfirmPassword" FontSize="18" Height="30"/>
+
+        <!-- Save Button -->
+        <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="4" x:Name="BtnSave" Content="Save" FontSize="20" Height="50" Click="BtnSave_Click"/>
+    </Grid>
+</Window>

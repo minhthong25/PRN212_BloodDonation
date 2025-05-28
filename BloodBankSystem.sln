@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodBankSystem", "BloodBankSystem\BloodBankSystem.csproj", "{D05E8F18-483C-4D7A-962F-36488AF37D58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{1FAC6CC5-2B30-4702-91A3-050589E98694}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{C2011700-9028-40B6-AEF4-5154CED85AAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D05E8F18-483C-4D7A-962F-36488AF37D58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D05E8F18-483C-4D7A-962F-36488AF37D58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D05E8F18-483C-4D7A-962F-36488AF37D58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D05E8F18-483C-4D7A-962F-36488AF37D58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FAC6CC5-2B30-4702-91A3-050589E98694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FAC6CC5-2B30-4702-91A3-050589E98694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FAC6CC5-2B30-4702-91A3-050589E98694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FAC6CC5-2B30-4702-91A3-050589E98694}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2011700-9028-40B6-AEF4-5154CED85AAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2011700-9028-40B6-AEF4-5154CED85AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2011700-9028-40B6-AEF4-5154CED85AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2011700-9028-40B6-AEF4-5154CED85AAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
