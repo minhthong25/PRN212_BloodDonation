@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\App.xaml
-2-33631441
+3376472124
 
-7-2079208307
+81629732735
 246-1588630232
-MainWindow.xaml;RegisterPage.xaml;
+MainWindow.xaml;RegisterPage.xaml;UserDisplay\UserDisplay.xaml;
 
-False
+True
 
