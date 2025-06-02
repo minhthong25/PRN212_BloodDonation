@@ -7,17 +7,17 @@ public partial class RequestApproval
 {
     public int ApprovalId { get; set; }
 
-    public int? RequestId { get; set; }
+    public int RequestId { get; set; }
 
-    public int? StaffId { get; set; }
+    public string ApproverUserId { get; set; } = null!;
 
-    public string? ApprovalStatus { get; set; }
+    public string ApprovalStatus { get; set; } = null!;
 
     public string? Notes { get; set; }
 
-    public DateTime? ApprovalDate { get; set; }
+    public DateTime ApprovalDate { get; set; }
 
-    public virtual BloodRequest? Request { get; set; }
+    public virtual User ApproverUser { get; set; } = null!;
 
-    public virtual Staff? Staff { get; set; }
+    public virtual BloodRequest Request { get; set; } = null!;
 }
