@@ -7,7 +7,7 @@ public partial class BloodGroup
 {
     public int BloodGroupId { get; set; }
 
-    public string? GroupName { get; set; }
+    public string GroupName { get; set; } = null!;
 
     public virtual ICollection<BloodInventory> BloodInventories { get; set; } = new List<BloodInventory>();
 

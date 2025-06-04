@@ -5,7 +5,7 @@ namespace Repository.Models;
 
 public partial class Recipient
 {
-    public int RecipientId { get; set; }
+    public string RecipientId { get; set; } = null!;
 
     public string? MedicalCondition { get; set; }
 

@@ -10,12 +10,24 @@
     <Compile Update="RegisterPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserDisplay\DonorDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserDisplay\UserInfo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="RegisterPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserDisplay\DonorDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserDisplay\UserInfo.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

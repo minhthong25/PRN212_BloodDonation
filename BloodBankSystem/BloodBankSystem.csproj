@@ -15,7 +15,6 @@
   <ItemGroup>
     <Folder Include="AdminDisplay\" />
     <Folder Include="ManagerDisplay\" />
-    <Folder Include="UserDisplay\" />
   </ItemGroup>
 
 </Project>

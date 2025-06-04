@@ -30,6 +30,21 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <!-- Blood Group -->
+        <Label Grid.Row="5" Grid.Column="0" Content="Blood Group" FontSize="18" VerticalAlignment="Center"/>
+        <ComboBox Grid.Row="5" Grid.Column="1" x:Name="cbBloodGroup" FontSize="18" Height="30">
+            <ComboBoxItem Content="Unknown" />
+            <ComboBoxItem Content="A+" />
+            <ComboBoxItem Content="A-" />
+            <ComboBoxItem Content="B+" />
+            <ComboBoxItem Content="B-" />
+            <ComboBoxItem Content="AB+" />
+            <ComboBoxItem Content="AB-" />
+            <ComboBoxItem Content="O+" />
+            <ComboBoxItem Content="O-" />
+        </ComboBox>
+
+
         <!-- Title -->
         <Label Grid.Row="0" Grid.ColumnSpan="4" Content="Register" FontSize="32" HorizontalAlignment="Center" Margin="0,0,0,20"/>
 
@@ -38,26 +53,26 @@
         <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtEmail" FontSize="18" Height="30"/>
 
         <!-- Phone Number -->
-        <Label Grid.Row="2" Grid.Column="2" Content="PhoneNumber" FontSize="18" VerticalAlignment="Center"/>
-        <TextBox Grid.Row="2" Grid.Column="3" x:Name="txtPhoneNumber" FontSize="18" Height="30"/>
+        <Label Grid.Row="4" Grid.Column="0" Content="PhoneNumber" FontSize="18" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtPhoneNumber" FontSize="18" Height="30"/>
 
         <!-- Name -->
         <Label Grid.Row="3" Grid.Column="0" Content="Name" FontSize="18" VerticalAlignment="Center"/>
         <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtName" FontSize="18" Height="30"/>
 
-        <!-- Address -->
-        <Label Grid.Row="3" Grid.Column="2" Content="Address" FontSize="18" VerticalAlignment="Center"/>
-        <TextBox Grid.Row="3" Grid.Column="3" x:Name="txtAddress" FontSize="18" Height="30"/>
-
         <!-- Password -->
-        <Label Grid.Row="4" Grid.Column="0" Content="Password" FontSize="18" VerticalAlignment="Center"/>
-        <PasswordBox Grid.Row="4" Grid.Column="1" x:Name="txtPassword" FontSize="18" Height="30"/>
+        <Label Grid.Row="2" Grid.Column="2" Content="Password" FontSize="18" VerticalAlignment="Center"/>
+        <PasswordBox Grid.Row="2" Grid.Column="3" x:Name="txtPassword" FontSize="18" Height="30"/>
 
         <!-- Confirm Password -->
-        <Label Grid.Row="5" Grid.Column="0" Content="Confirm Password" FontSize="18" VerticalAlignment="Center"/>
-        <PasswordBox Grid.Row="5" Grid.Column="1" x:Name="txtConfirmPassword" FontSize="18" Height="30"/>
+        <Label Grid.Row="3" Grid.Column="2" Content="Confirm Password" FontSize="18" VerticalAlignment="Center"/>
+        <PasswordBox Grid.Row="3" Grid.Column="3" x:Name="txtConfirmPassword" FontSize="18" Height="30"/>
 
         <!-- Save Button -->
-        <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="4" x:Name="BtnSave" Content="Save" FontSize="20" Height="50" Click="BtnSave_Click"/>
+        <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="BtnSave" Content="Save" FontSize="20" Height="50" Width="150" Margin="10,0" Click="BtnSave_Click"/>
+            <Button x:Name="BtnReturn" Content="Return" FontSize="20" Height="50" Width="150" Margin="10,0" Click="BtnReturn_Click"/>
+        </StackPanel>
+        
     </Grid>
 </Window>
