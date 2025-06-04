@@ -1,5 +1,7 @@
-﻿using Repository.Models;
+﻿using Repository.Interface;
+using Repository.Models;
 using Repository.Repository;
+using Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +10,23 @@ using System.Threading.Tasks;
 
 namespace Services.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
-        private static readonly UserRepository _userRepository = new UserRepository();
+        private readonly IGenericRepository<User> _userRepository;
+
+        public UserService()
+        {
+            _userRepository = new GenericRepository<User>();
+        }
+
+        public void Add(User user)
+        {
+            _userRepository.Add(user);
+        }
+
         public User? checkLogin(string email, string password)
         {
-            User user = _userRepository.Get(email);
+            User? user = _userRepository.FirstOrDefault(u => u.Email == email);
             if (user != null)
             {
                 if (user.Password == password)
@@ -24,20 +37,24 @@ namespace Services.Services
             return null;
         }
 
-        public void Update(User user)
+        public void Delete(User user)
         {
-            if (user != null)
-            {
-                _userRepository.Update(user);
-            }
+            _userRepository.Delete(user);
         }
 
-        public void AddUser(User user)
+        public User? Get(string Email)
         {
-            if (user != null)
-            {
-                _userRepository.Add(user);
-            }
+            return _userRepository.FirstOrDefault(u => u.Email == Email);
+        }    
+        
+        public List<User> GetAll()
+        {
+            return _userRepository.GetAll().ToList();
+        }
+
+        public void Update(User user)
+        {
+            _userRepository.Update(user);
         }
     }
 }

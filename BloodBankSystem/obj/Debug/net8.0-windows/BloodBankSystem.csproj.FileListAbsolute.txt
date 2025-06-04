@@ -84,3 +84,7 @@ C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSyst
 C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\UserDisplay.g.cs
 C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\UserDisplay.baml
 C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\BloodBan.1AEBF0B9.Up2Date
+C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\DonorDisplay.g.cs
+C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\UserInfo.g.cs
+C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\DonorDisplay.baml
+C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\UserInfo.baml
