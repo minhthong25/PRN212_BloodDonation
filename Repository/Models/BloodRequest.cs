@@ -7,7 +7,7 @@ public partial class BloodRequest
 {
     public int RequestId { get; set; }
 
-    public string RecipientId { get; set; } = null!;
+    public int RecipientId { get; set; }
 
     public int BloodGroupId { get; set; }
 

@@ -7,7 +7,7 @@ public partial class Appointment
 {
     public int AppointmentId { get; set; }
 
-    public string DonorId { get; set; } = null!;
+    public int DonorId { get; set; }
 
     public int LocationId { get; set; }
 

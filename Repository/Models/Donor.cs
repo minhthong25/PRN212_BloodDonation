@@ -5,7 +5,7 @@ namespace Repository.Models;
 
 public partial class Donor
 {
-    public string DonorId { get; set; } = null!;
+    public int DonorId { get; set; }
 
     public int BloodGroupId { get; set; }
 

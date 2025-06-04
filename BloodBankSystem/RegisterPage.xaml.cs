@@ -48,15 +48,15 @@ namespace BloodBankSystem
                 return;
             }
 
-            // Create new user
-            var newUser = new User
-            {
-                Email = txtEmail.Text,
-                Password = txtPassword.Password,
-                FullName = txtName.Text,
-                Phone = txtPhoneNumber.Text,
-                Role = "User" // Default role
-            };
+                // Create new user
+                var newUser = new User
+                {
+                    Email = txtEmail.Text,
+                    Password = txtPassword.Password,
+                    FullName = txtName.Text,
+                    Phone = txtPhoneNumber.Text,
+                    Role = "User" // Default role
+                };
 
             try
             {

@@ -9,7 +9,7 @@ public partial class RequestApproval
 
     public int RequestId { get; set; }
 
-    public string ApproverUserId { get; set; } = null!;
+    public int ApproverUserId { get; set; }
 
     public string ApprovalStatus { get; set; } = null!;
 
