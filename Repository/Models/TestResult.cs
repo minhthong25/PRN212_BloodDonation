@@ -7,7 +7,7 @@ public partial class TestResult
 {
     public int TestId { get; set; }
 
-    public string DonorId { get; set; } = null!;
+    public int DonorId { get; set; }
 
     public DateOnly TestDate { get; set; }
 

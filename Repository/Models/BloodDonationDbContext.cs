@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace Repository.Models;
 
@@ -37,28 +36,16 @@ public partial class BloodDonationDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer(GetConnectionString());
-
-    private string GetConnectionString()
-    {
-        IConfiguration config = new ConfigurationBuilder()
-             .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsetting.json", true, true)
-                    .Build();
-        var strConn = config["ConnectionStrings:DefaultConnectionStringDB"];
-
-        return strConn;
-    }
-
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=(local);uid=sa;pwd=12345;database=BloodDonationDB;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Appointment>(entity =>
         {
-            entity.HasKey(e => e.AppointmentId).HasName("PK__Appointm__8ECDFCC2890A8D35");
+            entity.HasKey(e => e.AppointmentId).HasName("PK__Appointm__8ECDFCC2D705DF92");
 
             entity.Property(e => e.AppointmentDate).HasColumnType("datetime");
-            entity.Property(e => e.DonorId).HasMaxLength(20);
 
             entity.HasOne(d => d.Donor).WithMany(p => p.Appointments)
                 .HasForeignKey(d => d.DonorId)
@@ -72,14 +59,14 @@ public partial class BloodDonationDbContext : DbContext
 
         modelBuilder.Entity<BloodGroup>(entity =>
         {
-            entity.HasKey(e => e.BloodGroupId).HasName("PK__BloodGro__4398C68F6D5400B9");
+            entity.HasKey(e => e.BloodGroupId).HasName("PK__BloodGro__4398C68F3867153F");
 
             entity.Property(e => e.GroupName).HasMaxLength(10);
         });
 
         modelBuilder.Entity<BloodInventory>(entity =>
         {
-            entity.HasKey(e => e.InventoryId).HasName("PK__BloodInv__F5FDE6B3C4D49649");
+            entity.HasKey(e => e.InventoryId).HasName("PK__BloodInv__F5FDE6B3583BC122");
 
             entity.ToTable("BloodInventory");
 
@@ -95,9 +82,8 @@ public partial class BloodDonationDbContext : DbContext
 
         modelBuilder.Entity<BloodRequest>(entity =>
         {
-            entity.HasKey(e => e.RequestId).HasName("PK__BloodReq__33A8517A8942C1C3");
+            entity.HasKey(e => e.RequestId).HasName("PK__BloodReq__33A8517AB3B6778D");
 
-            entity.Property(e => e.RecipientId).HasMaxLength(20);
             entity.Property(e => e.RequestDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
@@ -119,9 +105,9 @@ public partial class BloodDonationDbContext : DbContext
 
         modelBuilder.Entity<Donor>(entity =>
         {
-            entity.HasKey(e => e.DonorId).HasName("PK__Donors__052E3F78B5C41D68");
+            entity.HasKey(e => e.DonorId).HasName("PK__Donors__052E3F7848FCA1B7");
 
-            entity.Property(e => e.DonorId).HasMaxLength(20);
+            entity.Property(e => e.DonorId).ValueGeneratedNever();
 
             entity.HasOne(d => d.BloodGroup).WithMany(p => p.Donors)
                 .HasForeignKey(d => d.BloodGroupId)
@@ -135,7 +121,7 @@ public partial class BloodDonationDbContext : DbContext
 
         modelBuilder.Entity<Location>(entity =>
         {
-            entity.HasKey(e => e.LocationId).HasName("PK__Location__E7FEA4971FA076A9");
+            entity.HasKey(e => e.LocationId).HasName("PK__Location__E7FEA4972595E6DB");
 
             entity.Property(e => e.Address).HasMaxLength(255);
             entity.Property(e => e.Name).HasMaxLength(100);
@@ -143,9 +129,9 @@ public partial class BloodDonationDbContext : DbContext
 
         modelBuilder.Entity<Recipient>(entity =>
         {
-            entity.HasKey(e => e.RecipientId).HasName("PK__Recipien__F0A6024DAA247D04");
+            entity.HasKey(e => e.RecipientId).HasName("PK__Recipien__F0A6024DF66514E7");
 
-            entity.Property(e => e.RecipientId).HasMaxLength(20);
+            entity.Property(e => e.RecipientId).ValueGeneratedNever();
             entity.Property(e => e.MedicalCondition).HasMaxLength(255);
 
             entity.HasOne(d => d.RecipientNavigation).WithOne(p => p.Recipient)
@@ -155,13 +141,12 @@ public partial class BloodDonationDbContext : DbContext
 
         modelBuilder.Entity<RequestApproval>(entity =>
         {
-            entity.HasKey(e => e.ApprovalId).HasName("PK__RequestA__328477F4DA76EAA4");
+            entity.HasKey(e => e.ApprovalId).HasName("PK__RequestA__328477F4BB5A0875");
 
             entity.Property(e => e.ApprovalDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.ApprovalStatus).HasMaxLength(20);
-            entity.Property(e => e.ApproverUserId).HasMaxLength(20);
             entity.Property(e => e.Notes).HasMaxLength(255);
 
             entity.HasOne(d => d.ApproverUser).WithMany(p => p.RequestApprovals)
@@ -176,9 +161,8 @@ public partial class BloodDonationDbContext : DbContext
 
         modelBuilder.Entity<TestResult>(entity =>
         {
-            entity.HasKey(e => e.TestId).HasName("PK__TestResu__8CC331602E768BDD");
+            entity.HasKey(e => e.TestId).HasName("PK__TestResu__8CC3316085609C3B");
 
-            entity.Property(e => e.DonorId).HasMaxLength(20);
             entity.Property(e => e.ResultNote).HasMaxLength(255);
 
             entity.HasOne(d => d.Donor).WithMany(p => p.TestResults)
@@ -188,11 +172,10 @@ public partial class BloodDonationDbContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4C7179272A");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4CDCE59778");
 
-            entity.HasIndex(e => e.Email, "UQ__Users__A9D1053478C09A53").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Users__A9D105345FCACF4A").IsUnique();
 
-            entity.Property(e => e.UserId).HasMaxLength(20);
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
