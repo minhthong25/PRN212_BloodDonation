@@ -26,15 +26,10 @@ namespace Services.Services
 
         public User? checkLogin(string email, string password)
         {
-            User? user = _userRepository.FirstOrDefault(u => u.Email == email);
-            if (user != null)
-            {
-                if (user.Password == password)
-                {
-                    return user;
-                }
-            }
-            return null;
+            var user = _userRepository.GetAll().FirstOrDefault(u => 
+                u.Email.Equals(email, StringComparison.OrdinalIgnoreCase) && 
+                u.Password.Equals(password));
+            return user;
         }
 
         public void Delete(User user)
@@ -55,6 +50,40 @@ namespace Services.Services
         public void Update(User user)
         {
             _userRepository.Update(user);
+        }
+
+        public User? Register(User user)
+        {
+            // Check if email already exists
+            if (_userRepository.GetAll().Any(u => u.Email.Equals(user.Email, StringComparison.OrdinalIgnoreCase)))
+            {
+                return null;
+            }
+            // Set default values
+            user.CreatedAt = DateTime.Now;
+            user.IsActive = true;
+            user.Role = "User"; // Default role
+
+            _userRepository.Add(user);
+            _userRepository.Save();
+            return user;
+        }
+
+        public void UpdateUser(User user)
+        {
+            var existingUser = _userRepository.GetAll().FirstOrDefault(u => u.UserId == user.UserId);
+            if (existingUser == null)
+            {
+                throw new Exception("User not found");
+            }
+
+            // Update only allowed fields
+            existingUser.FullName = user.FullName;
+            existingUser.Email = user.Email;
+            existingUser.Phone = user.Phone;
+
+            _userRepository.Update(existingUser);
+            _userRepository.Save();
         }
     }
 }

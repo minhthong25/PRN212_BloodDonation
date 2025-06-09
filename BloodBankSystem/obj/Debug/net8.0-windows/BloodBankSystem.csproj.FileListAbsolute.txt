@@ -88,3 +88,5 @@ C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSyst
 C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\UserInfo.g.cs
 C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\DonorDisplay.baml
 C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\UserInfo.baml
+C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\RecipientDisplay.g.cs
+C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\RecipientDisplay.baml

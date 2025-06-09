@@ -5,8 +5,157 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BloodBankSystem.UserDisplay"
         mc:Ignorable="d"
-        Title="UserInfo" Height="450" Width="800">
-    <Grid>
-        
+        Title="User Information" Height="600" Width="800" WindowState="Maximized" >
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Text="User Information" 
+                   FontSize="24" 
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center" 
+                   Margin="0,0,0,20"/>
+
+        <!-- User Information -->
+        <Border Grid.Row="1" 
+                BorderBrush="Gray" 
+                BorderThickness="1" 
+                Padding="20"
+                Background="#F5F5F5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Full Name -->
+                <TextBlock Text="Full Name:" 
+                           Grid.Row="0" 
+                           Grid.Column="0" 
+                           Margin="0,0,10,10"
+                           VerticalAlignment="Center"/>
+                <TextBox x:Name="txtFullName" 
+                        Grid.Row="0" 
+                        Grid.Column="1" 
+                        Margin="0,0,0,10"
+                        Padding="5"/>
+
+                <!-- Email -->
+                <TextBlock Text="Email:" 
+                           Grid.Row="1" 
+                           Grid.Column="0" 
+                           Margin="0,0,10,10"
+                           VerticalAlignment="Center"/>
+                <TextBox x:Name="txtEmail" 
+                        Grid.Row="1" 
+                        Grid.Column="1" 
+                        Margin="0,0,0,10"
+                        Padding="5"/>
+
+                <!-- Phone -->
+                <TextBlock Text="Phone Number:" 
+                           Grid.Row="2" 
+                           Grid.Column="0" 
+                           Margin="0,0,10,10"
+                           VerticalAlignment="Center"/>
+                <TextBox x:Name="txtPhone" 
+                        Grid.Row="2" 
+                        Grid.Column="1" 
+                        Margin="0,0,0,10"
+                        Padding="5"/>
+
+                <!-- Role -->
+                <TextBlock Text="Role:" 
+                           Grid.Row="3" 
+                           Grid.Column="0" 
+                           Margin="0,0,10,10"
+                           VerticalAlignment="Center"/>
+                <TextBlock x:Name="txtRole" 
+                          Grid.Row="3" 
+                          Grid.Column="1" 
+                          Margin="0,0,0,10"
+                          Padding="5"/>
+
+                <!-- Created At -->
+                <TextBlock Text="Create at:" 
+                           Grid.Row="4" 
+                           Grid.Column="0" 
+                           Margin="0,0,10,10"
+                           VerticalAlignment="Center"/>
+                <TextBlock x:Name="txtCreatedAt" 
+                          Grid.Row="4" 
+                          Grid.Column="1" 
+                          Margin="0,0,0,10"
+                          Padding="5"/>
+
+                <!-- Status -->
+                <TextBlock Text="Status:" 
+                           Grid.Row="5" 
+                           Grid.Column="0" 
+                           Margin="0,0,10,10"
+                           VerticalAlignment="Center"/>
+                <TextBlock x:Name="txtStatus" 
+                          Grid.Row="5" 
+                          Grid.Column="1" 
+                          Margin="0,0,0,10"
+                          Padding="5"/>
+            </Grid>
+        </Border>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="2" 
+            Orientation="Horizontal" 
+            HorizontalAlignment="Center" 
+            Margin="0,20,0,0">
+            <Button x:Name="btnEdit" 
+            Content="Edit Profile" 
+            Click="btnEdit_Click"
+            Width="120" 
+            Height="35" 
+            Margin="0,0,10,0"
+            Background="#2196F3"
+            Foreground="White"/>
+
+            <Button x:Name="btnSave" 
+            Content="Save Change" 
+            Click="btnSave_Click"
+            Width="120" 
+            Height="35" 
+            Margin="0,0,10,0"
+            Background="#4CAF50"
+            Foreground="White"
+            Visibility="Collapsed"/>
+
+            <Button x:Name="btnCancel" 
+                    Content="Hủy" 
+                    Click="btnCancel_Click"
+                    Width="120" 
+                    Height="35"
+                    Margin="0,0,10,0"
+                    Background="#F44336"
+                    Foreground="White"
+                    Visibility="Collapsed"/>
+
+            <Button x:Name="btnReturn" 
+                    Content="Return" 
+                    Click="btnReturn_Click"
+                    Width="120" 
+                    Height="35"
+                    Background="#607D8B"
+                    Foreground="White"/>
+        </StackPanel>
+    
     </Grid>
 </Window>

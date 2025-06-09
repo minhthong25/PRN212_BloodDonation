@@ -12,5 +12,11 @@ namespace Services.Interface
         public List<User> GetAll();
 
         public void Add(User user);
+
+        public User? checkLogin(string email, string password);
+
+        User? Register(User user);
+
+        void UpdateUser(User user);
     }
 }

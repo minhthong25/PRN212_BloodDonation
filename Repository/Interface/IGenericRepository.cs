@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Repository.Models;
 
 namespace Repository.Interface
 {
@@ -21,5 +22,6 @@ namespace Repository.Interface
         IQueryable<T> Query();
         void SaveChanges();
         void Dispose();
+        void Save();
     }
 }

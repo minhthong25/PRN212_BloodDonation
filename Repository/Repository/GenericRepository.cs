@@ -22,36 +22,26 @@ namespace Repository.Repository
         public virtual void Add(T entity)
         {
             _dbSet.Add(entity);
-            _context.SaveChanges();
         }
 
         public virtual void AddRange(IEnumerable<T> entities)
         {
             _dbSet.AddRange(entities);
-            _context.SaveChanges();
         }
 
         public virtual void Update(T entity)
         {
-            _dbSet.Attach(entity);
-            _context.Entry(entity).State = EntityState.Modified;
-            _context.SaveChanges();
+            _dbSet.Update(entity);
         }
 
         public virtual void Delete(T entity)
         {
-            if (_context.Entry(entity).State == EntityState.Detached)
-            {
-                _dbSet.Attach(entity);
-            }
             _dbSet.Remove(entity);
-            _context.SaveChanges();
         }
 
         public virtual void DeleteRange(IEnumerable<T> entities)
         {
             _dbSet.RemoveRange(entities);
-            _context.SaveChanges();
         }
 
         public virtual T? GetById(object id)
@@ -90,6 +80,11 @@ namespace Repository.Repository
         }
 
         public virtual void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
+
+        public virtual void Save()
         {
             _context.SaveChanges();
         }

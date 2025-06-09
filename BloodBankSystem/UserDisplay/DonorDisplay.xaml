@@ -5,8 +5,106 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BloodBankSystem.UserDisplay"
         mc:Ignorable="d"
-        Title="DonorDisplay" Height="450" Width="800">
-    <Grid>
-        
+        Title="Thông tin người hiến máu" WindowState="Maximized" d:DesignHeight="635" d:DesignWidth="1180">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Text="Thông tin người hiến máu" 
+                   FontSize="24" 
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center" 
+                   Margin="0,0,0,20"/>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Donor Information -->
+            <Border Grid.Column="0" 
+                    BorderBrush="Gray" 
+                    BorderThickness="1" 
+                    Margin="0,0,10,0" 
+                    Padding="15"
+                    Background="#F5F5F5">
+                <StackPanel>
+                    <TextBlock Text="Thông tin cá nhân" 
+                               FontSize="18" 
+                               FontWeight="Bold" 
+                               Margin="0,0,0,15"/>
+                    
+                    <StackPanel x:Name="donorInfoPanel">
+                        <TextBlock x:Name="txtFullName" Margin="0,0,0,5"/>
+                        <TextBlock x:Name="txtPhone" Margin="0,0,0,5"/>
+                        <TextBlock x:Name="txtCreatedAt" Margin="0,0,0,5"/>
+                        <TextBlock x:Name="txtIsActive" Margin="0,0,0,5"/>
+                        <TextBlock x:Name="txtBloodGroup" Margin="0,0,0,5"/>
+                        <TextBlock x:Name="txtLastDonation" Margin="0,0,0,5"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Test Results and Appointments -->
+            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                <!-- Test Results -->
+                <Border BorderBrush="Gray" 
+                        BorderThickness="1" 
+                        Margin="0,0,0,10" 
+                        Padding="15"
+                        Background="#F5F5F5">
+                    <StackPanel>
+                        <TextBlock Text="Kết quả xét nghiệm gần nhất" 
+                                   FontSize="18" 
+                                   FontWeight="Bold" 
+                                   Margin="0,0,0,15"/>
+                        
+                        <StackPanel x:Name="testResultPanel">
+                            <TextBlock x:Name="txtTestDate" Margin="0,0,0,5"/>
+                            <TextBlock x:Name="txtResultNote" Margin="0,0,0,5"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- Upcoming Appointments -->
+                <Border BorderBrush="Gray" 
+                        BorderThickness="1" 
+                        Padding="15"
+                        Background="#F5F5F5">
+                    <StackPanel>
+                        <TextBlock Text="Lịch hẹn hiến máu sắp tới" 
+                                   FontSize="18" 
+                                   FontWeight="Bold" 
+                                   Margin="0,0,0,15"/>
+                        
+                        <StackPanel x:Name="appointmentPanel">
+                            <TextBlock x:Name="txtAppointmentDate" Margin="0,0,0,5"/>
+                            <TextBlock x:Name="txtLocation" Margin="0,0,0,5"/>
+                            <TextBlock x:Name="txtStatus" Margin="0,0,0,5"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <!-- Return Button -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,20,0,0">
+            <Button x:Name="btnReturn" 
+                    Content="Quay lại" 
+                    Click="btnReturn_Click"
+                    Width="120" 
+                    Height="35"
+                    Background="#607D8B"
+                    Foreground="White"/>
+        </StackPanel>
     </Grid>
 </Window>
