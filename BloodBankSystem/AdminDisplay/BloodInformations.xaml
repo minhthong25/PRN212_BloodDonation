@@ -1,0 +1,84 @@
+﻿<Window x:Class="BloodBankSystem.AdminDisplay.BloodInformations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BloodBankSystem.AdminDisplay"
+        mc:Ignorable="d"
+        Title="Blood Information" Height="450" Width="800" WindowState="Maximized">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Text="Blood Inventory Information" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Margin="0,0,0,20"
+                   HorizontalAlignment="Center"/>
+
+        <!-- DataGrid -->
+        <DataGrid x:Name="dgBloodInventory" 
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  AlternatingRowBackground="LightGray"
+                  GridLinesVisibility="All"
+                  BorderBrush="Gray"
+                  BorderThickness="1"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  CanUserReorderColumns="False"
+                  CanUserResizeRows="False"
+                  CanUserSortColumns="True"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Blood Group" 
+                                  Binding="{Binding BloodGroup.GroupName}" 
+                                  Width="*"/>
+                <DataGridTextColumn Header="Quantity" 
+                                  Binding="{Binding Quantity}" 
+                                  Width="*"/>
+                <DataGridTextColumn Header="Last Updated" 
+                                  Binding="{Binding UpdatedAt, StringFormat=dd/MM/yyyy HH:mm}" 
+                                  Width="*"/>
+                <DataGridTemplateColumn Header="Action" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Edit" 
+                                    Click="EditButton_Click"
+                                    Width="80"
+                                    Height="30"
+                                    Margin="5"
+                                    Background="#2196F3"
+                                    Foreground="White"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right" 
+                    Margin="10">
+            <Button x:Name="btnSave" 
+                    Content="Save" 
+                    Width="80" 
+                    Margin="5,0" 
+                    Click="btnSave_Click"
+                    Visibility="Collapsed"/>
+            <Button x:Name="btnCancel" 
+                    Content="Cancel" 
+                    Width="80" 
+                    Margin="5,0" 
+                    Click="btnCancel_Click"
+                    Visibility="Collapsed"/>
+        </StackPanel>
+    </Grid>
+</Window>

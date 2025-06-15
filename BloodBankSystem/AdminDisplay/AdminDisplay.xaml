@@ -1,0 +1,28 @@
+﻿<Window x:Class="BloodBankSystem.AdminDisplay.AdminDisplay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BloodBankSystem.AdminDisplay"
+        mc:Ignorable="d"
+        Title="AdminDisplay" Height="450" Width="800" WindowState="Maximized">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+            <Button x:Name="btnBloodEvent" Content="Blood Event Management" 
+                    Height="80" Margin="0,10" FontSize="20"
+                    Click="btnBloodEvent_Click"/>
+            
+            <Button x:Name="btnBloodInfo" Content="Blood Information" 
+                    Height="80" Margin="0,10" FontSize="20"
+                    Click="btnBloodInfo_Click"/>
+            
+            <Button x:Name="btnUserInfo" Content="User Information" 
+                    Height="80" Margin="0,10" FontSize="20"
+                    Click="btnUserInfo_Click"/>
+            
+            <Button x:Name="btnUserRequest" Content="User Request Management" 
+                    Height="80" Margin="0,10" FontSize="20"
+                    Click="btnUserRequest_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

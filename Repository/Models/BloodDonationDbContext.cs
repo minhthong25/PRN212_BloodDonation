@@ -84,9 +84,13 @@ public partial class BloodDonationDbContext : DbContext
         {
             entity.HasKey(e => e.RequestId).HasName("PK__BloodReq__33A8517AB3B6778D");
 
+            entity.Property(e => e.Reason).HasMaxLength(255);
             entity.Property(e => e.RequestDate)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            entity.Property(e => e.RequestType)
+                .HasMaxLength(20)
+                .HasDefaultValue("Normal");
             entity.Property(e => e.ResponseMessage).HasMaxLength(255);
             entity.Property(e => e.Status)
                 .HasMaxLength(50)

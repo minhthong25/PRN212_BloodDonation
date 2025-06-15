@@ -5,7 +5,7 @@
        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        xmlns:local="clr-namespace:BloodBankSystem"
        mc:Ignorable="d"
-       Title="MainWindow" WindowState="Maximized">
+       Title="MainWindow" WindowState="Maximized" Width="1010">
     <Grid Background="White">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Height="700">
             <TextBlock Text="Blood Bank" FontSize="80" FontWeight="Bold" 

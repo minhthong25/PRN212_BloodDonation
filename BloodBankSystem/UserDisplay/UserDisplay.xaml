@@ -5,28 +5,131 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BloodBankSystem.UserDisplay"
         mc:Ignorable="d"
-        Title="User Display" Height="450" Width="800">
+        Title="User Display" WindowState="Maximized" Height="640" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
         <StackPanel Grid.Row="0" Margin="20">
-            <TextBlock Text="Welcome to Blood Bank System" 
-                       FontSize="24" 
-                       FontWeight="Bold" 
-                       HorizontalAlignment="Center"
-                       Margin="0,0,0,20"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Welcome to Blood Bank System" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,20"/>
+
+                <Button Grid.Column="1"
+                        x:Name="btnLogout"
+                        Content="Logout"
+                        Click="btnLogout_Click"
+                        Width="100"
+                        Height="35"
+                        Background="#F44336"
+                        Foreground="White"
+                        VerticalAlignment="Top"/>
+            </Grid>
             
-            <TextBlock x:Name="txtUserInfo" 
-                       FontSize="16" 
-                       TextWrapping="Wrap"
-                       Margin="0,0,0,20"/>
+            <Border BorderBrush="Gray" 
+                    BorderThickness="1" 
+                    Padding="15" 
+                    Margin="0,0,0,20"
+                    Background="#F5F5F5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="txtUserInfo" 
+           FontSize="16" 
+           TextWrapping="Wrap"
+           Background="LightGray" 
+           Text="User Information" />
+
+
+                    <Button Grid.Column="1"
+                            x:Name="btnViewUserInfo"
+                            Content="View Profile"
+                            Click="btnViewUserInfo_Click"
+                            Width="120"
+                            Height="35"
+                            Margin="10,0,0,0"
+                            Background="#2196F3"
+                            Foreground="White"
+                            VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
         </StackPanel>
         
         <Grid Grid.Row="1" Margin="20">
-            <!-- Add more content here based on user role -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Blood Donation Registration Section -->
+            <Border Grid.Row="0"
+                    BorderBrush="Gray" 
+                    BorderThickness="1" 
+                    Margin="0,0,0,20" 
+                    Padding="20"
+                    Background="#F5F5F5">
+                <StackPanel>
+                    <TextBlock Text="Register to Donate Blood" 
+                               FontSize="20" 
+                               FontWeight="Bold" 
+                               Margin="0,0,0,10"/>
+                    
+                    <TextBlock Text="Would you like to become a blood donor? Click the button below to register." 
+                               TextWrapping="Wrap" 
+                               Margin="0,0,0,15"/>
+                    
+                    <Button x:Name="btnRegisterDonor" 
+                            Content="Register as Donor" 
+                            Click="btnRegisterDonor_Click"
+                            Width="200" 
+                            Height="40" 
+                            FontSize="16"
+                            Background="#FF4081"
+                            Foreground="White"
+                            HorizontalAlignment="Left"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Blood Receiving Registration Section -->
+            <Border Grid.Row="1"
+                    BorderBrush="Gray" 
+                    BorderThickness="1" 
+                    Padding="20"
+                    Background="#F5F5F5">
+                <StackPanel>
+                    <TextBlock Text="Register to Receive Blood" 
+                               FontSize="20" 
+                               FontWeight="Bold" 
+                               Margin="0,0,0,10"/>
+                    
+                    <TextBlock Text="Need blood for medical treatment? Click the button below to register as a recipient." 
+                               TextWrapping="Wrap" 
+                               Margin="0,0,0,15"/>
+                    
+                    <Button x:Name="btnRegisterRecipient" 
+                            Content="Register as Recipient" 
+                            Click="btnRegisterRecipient_Click"
+                            Width="200" 
+                            Height="40" 
+                            FontSize="16"
+                            Background="#4CAF50"
+                            Foreground="White"
+                            HorizontalAlignment="Left"/>
+                </StackPanel>
+            </Border>
         </Grid>
     </Grid>
 </Window>

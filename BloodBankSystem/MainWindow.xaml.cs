@@ -11,6 +11,7 @@ using System.Windows.Shapes;
 using BloodBankSystem.UserDisplay;
 using Services.Services;
 using Repository.Models;
+using Services.Interface;
 
 namespace BloodBankSystem
 {
@@ -19,7 +20,7 @@ namespace BloodBankSystem
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly UserService _userService;
+        private readonly IUserService _userService;
         public MainWindow()
         {
             InitializeComponent();
@@ -40,8 +41,17 @@ namespace BloodBankSystem
             User? user = _userService.checkLogin(email, password);
             if (user != null)
             {
-                var userDisplay = new UserDisplay.UserDisplay();
-                userDisplay.Show();
+                if(user.Role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                    {
+                    var adminDisplay = new AdminDisplay.AdminDisplay();
+                    adminDisplay.Show();
+                }
+                else
+                {
+                    var userDisplay = new UserDisplay.UserDisplay();
+                    userDisplay.SetUser(user);
+                    userDisplay.Show();
+                }
                 this.Close();
             }
             else

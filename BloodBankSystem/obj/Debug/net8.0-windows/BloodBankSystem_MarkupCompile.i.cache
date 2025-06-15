@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\App.xaml
-5695389760
+13174489519
 
-10-2128938678
+18-2119615671
 246-1588630232
-MainWindow.xaml;RegisterPage.xaml;UserDisplay\DonorDisplay.xaml;UserDisplay\UserDisplay.xaml;UserDisplay\UserInfo.xaml;
+AdminDisplay\AdminDisplay.xaml;AdminDisplay\BloodEvent.xaml;AdminDisplay\BloodInformations.xaml;AdminDisplay\EditBloodInventory.xaml;AdminDisplay\EditUserInformation.xaml;AdminDisplay\UserInformation.xaml;AdminDisplay\UserRequest.xaml;MainWindow.xaml;RegisterPage.xaml;UserDisplay\DonorDisplay.xaml;UserDisplay\RecipientDisplay.xaml;UserDisplay\UserDisplay.xaml;UserDisplay\UserInfo.xaml;
 
 True
 

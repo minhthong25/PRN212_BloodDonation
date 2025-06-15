@@ -7,10 +7,34 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AdminDisplay\AdminDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminDisplay\BloodEvent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminDisplay\BloodInformations.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminDisplay\EditBloodInventory.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminDisplay\EditUserInformation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminDisplay\UserInformation.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminDisplay\UserRequest.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="RegisterPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UserDisplay\DonorDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserDisplay\RecipientDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UserDisplay\UserInfo.xaml.cs">
@@ -18,6 +42,27 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="AdminDisplay\AdminDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminDisplay\BloodEvent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminDisplay\BloodInformations.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminDisplay\EditBloodInventory.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminDisplay\EditUserInformation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminDisplay\UserInformation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminDisplay\UserRequest.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -25,6 +70,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserDisplay\DonorDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserDisplay\RecipientDisplay.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserDisplay\UserInfo.xaml">

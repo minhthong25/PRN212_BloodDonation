@@ -19,6 +19,10 @@ public partial class BloodRequest
 
     public DateTime RequestDate { get; set; }
 
+    public string RequestType { get; set; } = null!;
+
+    public string? Reason { get; set; }
+
     public virtual BloodGroup BloodGroup { get; set; } = null!;
 
     public virtual Recipient Recipient { get; set; } = null!;

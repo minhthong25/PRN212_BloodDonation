@@ -1,0 +1,42 @@
+﻿<Window x:Class="BloodBankSystem.UserDisplay.RecipientDisplay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BloodBankSystem.UserDisplay"
+        mc:Ignorable="d"
+        Title="RecipientDisplay" WindowState="Maximized" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Text="Recipient Information" 
+                   FontSize="24" 
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center" 
+                   Margin="0,0,0,20"/>
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <!-- Add your recipient information content here -->
+        </Grid>
+
+        <!-- Return Button -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,20,0,0">
+            <Button x:Name="btnReturn" 
+                    Content="Return" 
+                    Click="btnReturn_Click"
+                    Width="120" 
+                    Height="35"
+                    Background="#607D8B"
+                    Foreground="White"/>
+        </StackPanel>
+    </Grid>
+</Window>

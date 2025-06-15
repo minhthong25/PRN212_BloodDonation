@@ -12,9 +12,4 @@
     <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="AdminDisplay\" />
-    <Folder Include="ManagerDisplay\" />
-  </ItemGroup>
-
 </Project>
