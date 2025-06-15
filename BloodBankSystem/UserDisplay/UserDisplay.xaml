@@ -47,11 +47,13 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    
                     <TextBlock x:Name="txtUserInfo" 
-                               FontSize="16" 
-                               TextWrapping="Wrap"/>
-                    
+           FontSize="16" 
+           TextWrapping="Wrap"
+           Background="LightGray" 
+           Text="User Information" />
+
+
                     <Button Grid.Column="1"
                             x:Name="btnViewUserInfo"
                             Content="View Profile"

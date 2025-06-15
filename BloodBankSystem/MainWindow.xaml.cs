@@ -41,9 +41,17 @@ namespace BloodBankSystem
             User? user = _userService.checkLogin(email, password);
             if (user != null)
             {
-                var userDisplay = new UserDisplay.UserDisplay();
-                userDisplay.SetUser(user);
-                userDisplay.Show();
+                if(user.Role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                    {
+                    var adminDisplay = new AdminDisplay.AdminDisplay();
+                    adminDisplay.Show();
+                }
+                else
+                {
+                    var userDisplay = new UserDisplay.UserDisplay();
+                    userDisplay.SetUser(user);
+                    userDisplay.Show();
+                }
                 this.Close();
             }
             else

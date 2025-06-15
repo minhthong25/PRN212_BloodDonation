@@ -60,7 +60,12 @@ namespace BloodBankSystem
 
             try
             {
-                _userService.Add(newUser);
+                var registeredUser = _userService.Register(newUser);
+                if (registeredUser == null)
+                {
+                    MessageBox.Show("Email already exists!", "Registration Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
                 MessageBox.Show("Registration successful! Please login.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 
                 // Return to login page
@@ -79,15 +84,6 @@ namespace BloodBankSystem
             var mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
-        }
-
-        private void ResetFields()
-        {
-            txtEmail.Text = string.Empty;
-            txtPassword.Password = string.Empty;
-            txtConfirmPassword.Password = string.Empty;
-            txtName.Text = string.Empty;
-            txtPhoneNumber.Text = string.Empty;
         }
     }
 }

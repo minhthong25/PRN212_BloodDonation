@@ -19,23 +19,6 @@ namespace Services.Services
             _userRepository = new GenericRepository<User>();
         }
 
-        public void Add(User user)
-        {
-            _userRepository.Add(user);
-        }
-
-        public User? checkLogin(string email, string password)
-        {
-            var user = _userRepository.GetAll().FirstOrDefault(u => 
-                u.Email.Equals(email, StringComparison.OrdinalIgnoreCase) && 
-                u.Password.Equals(password));
-            return user;
-        }
-
-        public void Delete(User user)
-        {
-            _userRepository.Delete(user);
-        }
 
         public User? Get(string Email)
         {
@@ -50,6 +33,13 @@ namespace Services.Services
         public void Update(User user)
         {
             _userRepository.Update(user);
+        }
+        public User? checkLogin(string email, string password)
+        {
+            var user = _userRepository.GetAll().FirstOrDefault(u =>
+                u.Email.Equals(email, StringComparison.OrdinalIgnoreCase) &&
+                u.Password.Equals(password));
+            return user;
         }
 
         public User? Register(User user)
