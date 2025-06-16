@@ -84,5 +84,14 @@ namespace Services.Services
                 throw new Exception($"Error deleting location with ID {id}", ex);
             }
         }
+
+        public List<Location> GetUpcomingEvents()
+        {
+            return _locationRepository
+                .GetAll()
+                .Where(l => l.EventDate != null && l.EventDate >= DateTime.Today)
+                .OrderBy(l => l.EventDate)
+                .ToList();
+        }
     }
 }

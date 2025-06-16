@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\
+C:\Users\ADMIN\Source\Repos\PRN212_BloodDonation\BloodBankSystem\obj\Debug\net8.0-windows\
 BloodBankSystem
 none
 false
-TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\App.xaml
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+C:\Users\ADMIN\Source\Repos\PRN212_BloodDonation\BloodBankSystem\App.xaml
 13174489519
 
 1658416629
-246-1588630232
+246-379162191
 AdminDisplay\AdminDisplay.xaml;AdminDisplay\BloodEvent.xaml;AdminDisplay\BloodInformations.xaml;AdminDisplay\EditBloodInventory.xaml;AdminDisplay\EditUserInformation.xaml;AdminDisplay\UserInformation.xaml;AdminDisplay\UserRequest.xaml;MainWindow.xaml;RegisterPage.xaml;UserDisplay\DonorDisplay.xaml;UserDisplay\RecipientDisplay.xaml;UserDisplay\UserDisplay.xaml;UserDisplay\UserInfo.xaml;
 
 False

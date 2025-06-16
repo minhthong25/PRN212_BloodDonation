@@ -23,11 +23,12 @@ namespace BloodBankSystem.UserDisplay
     {
         private readonly UserService _userService;
         private User _currentUser;
-
+        private readonly LocationService _locationService;
         public DonorDisplay()
         {
             InitializeComponent();
             _userService = new UserService();
+            _locationService = new LocationService();
         }
 
         public void SetUser(User user)
@@ -36,6 +37,14 @@ namespace BloodBankSystem.UserDisplay
             LoadDonorInfo();
             LoadTestResults();
             LoadAppointments();
+            LoadEvents(); // gọi load sưj kiện
+        }
+
+        private void LoadEvents() // thêm load sự kiện để người dùng đăng ký
+        {
+            var locationService = new LocationService();
+            var events = locationService.GetAllLocations(); 
+            eventListBox.ItemsSource = events;
         }
 
         private void LoadDonorInfo()
@@ -116,6 +125,16 @@ namespace BloodBankSystem.UserDisplay
         private void Window_Closed(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void eventListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void RegisterEvent_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

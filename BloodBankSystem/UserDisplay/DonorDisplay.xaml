@@ -39,8 +39,8 @@
                                FontSize="18" 
                                FontWeight="Bold" 
                                Margin="0,0,0,15"/>
-                    
-                    <StackPanel x:Name="donorInfoPanel">
+
+                    <StackPanel x:Name="donorInfoPanel" Height="102">
                         <TextBlock x:Name="txtFullName" Margin="0,0,0,5"/>
                         <TextBlock x:Name="txtPhone" Margin="0,0,0,5"/>
                         <TextBlock x:Name="txtCreatedAt" Margin="0,0,0,5"/>
@@ -48,8 +48,41 @@
                         <TextBlock x:Name="txtBloodGroup" Margin="0,0,0,5"/>
                         <TextBlock x:Name="txtLastDonation" Margin="0,0,0,5"/>
                     </StackPanel>
+
+                    <!-- - Blood Donation Events --> 
+                    <TextBlock Text="Các sự kiện hiến máu đang diễn ra" 
+                               FontSize="16" 
+                               FontWeight="Bold" 
+                               Margin="0,20,0,10"/>
+
+                    <ListBox x:Name="eventListBox"
+                             Height="300"
+                             SelectedValuePath="Id"
+                             Margin="0,0,0,10">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="10" Margin="0,0,0,10" Background="#FAFAFA">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
+                                        <TextBlock Text="{Binding EventDate, StringFormat='Ngày tổ chức: {0:dd/MM/yyyy HH:mm}'}"/>
+                                        <TextBlock Text="{Binding Address, StringFormat='Địa điểm: {0}'}"/>
+                                        <TextBlock Text="{Binding Description, StringFormat='Mô tả: {0}'}" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                    <Button Content="Đăng ký hiến máu"
+                            Click="RegisterEvent_Click"
+                            Width="150"
+                            Height="35"
+                            Background="#4CAF50"
+                            Foreground="White"/>
                 </StackPanel>
             </Border>
+
+
 
             <!-- Test Results and Appointments -->
             <StackPanel Grid.Column="1" Margin="10,0,0,0">
@@ -64,7 +97,7 @@
                                    FontSize="18" 
                                    FontWeight="Bold" 
                                    Margin="0,0,0,15"/>
-                        
+
                         <StackPanel x:Name="testResultPanel">
                             <TextBlock x:Name="txtTestDate" Margin="0,0,0,5"/>
                             <TextBlock x:Name="txtResultNote" Margin="0,0,0,5"/>
@@ -82,11 +115,31 @@
                                    FontSize="18" 
                                    FontWeight="Bold" 
                                    Margin="0,0,0,15"/>
-                        
+
                         <StackPanel x:Name="appointmentPanel">
                             <TextBlock x:Name="txtAppointmentDate" Margin="0,0,0,5"/>
                             <TextBlock x:Name="txtLocation" Margin="0,0,0,5"/>
                             <TextBlock x:Name="txtStatus" Margin="0,0,0,5"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <!-- History of Donations -->
+                <Border BorderBrush="Gray" 
+                    BorderThickness="1" 
+                    Padding="15"
+                    Background="#F5F5F5"
+                    Margin ="0,10,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Lịch sử hiến máu" 
+                            FontSize="18" 
+                            FontWeight="Bold" 
+                            Margin="0,0,0,15"/>
+
+                        <StackPanel x:Name="appointmentPanel1">
+                            <TextBlock x:Name="txtAppointmentDate1" Margin="0,0,0,5"/>
+                            <TextBlock x:Name="txtLocation1" Margin="0,0,0,5"/>
+                            <TextBlock x:Name="txtStatus1" Margin="0,0,0,5"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
