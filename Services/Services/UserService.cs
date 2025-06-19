@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Services.Services
@@ -19,12 +20,11 @@ namespace Services.Services
             _userRepository = new GenericRepository<User>();
         }
 
-
         public User? Get(string Email)
         {
             return _userRepository.FirstOrDefault(u => u.Email == Email);
-        }    
-        
+        }
+
         public List<User> GetAll()
         {
             return _userRepository.GetAll().ToList();
@@ -34,6 +34,7 @@ namespace Services.Services
         {
             _userRepository.Update(user);
         }
+
         public User? checkLogin(string email, string password)
         {
             var user = _userRepository.GetAll().FirstOrDefault(u =>
@@ -74,6 +75,35 @@ namespace Services.Services
 
             _userRepository.Update(existingUser);
             _userRepository.Save();
+        }
+
+        public bool IsPhoneNumberExists(string phoneNumber)
+        {
+            return _userRepository.GetAll().Any(u => u.Phone == phoneNumber);
+        }
+
+        public bool ValidPhoneNumber(string phoneNumber)
+        {
+            // Remove any spaces or special characters
+            phoneNumber = Regex.Replace(phoneNumber, @"[^\d]", "");
+
+            // Check if the phone number is 10 or 11 digits
+            return phoneNumber.Length >= 10 && phoneNumber.Length <= 11 && phoneNumber.All(char.IsDigit);
+        }
+
+        public bool ValidName(string name)
+        {
+            // Remove leading and trailing spaces
+            name = name.Trim();
+
+            // Check if name is at least 2 characters long
+            if (name.Length < 2)
+                return false;
+
+            // Pattern for Vietnamese characters and spaces
+            string pattern = @"^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵýỷỹ\s]+$";
+
+            return Regex.IsMatch(name, pattern);
         }
     }
 }

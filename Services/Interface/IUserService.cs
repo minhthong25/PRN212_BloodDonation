@@ -14,5 +14,11 @@ namespace Services.Interface
         User? Register(User user);
 
         void UpdateUser(User user);
+
+        bool ValidPhoneNumber(string phoneNumber);
+
+        bool IsPhoneNumberExists(string phoneNumber);
+
+        bool ValidName(string name);
     }
 }

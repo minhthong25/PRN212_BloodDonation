@@ -32,17 +32,7 @@
 
         <!-- Blood Group -->
         <Label Grid.Row="5" Grid.Column="0" Content="Blood Group" FontSize="18" VerticalAlignment="Center"/>
-        <ComboBox Grid.Row="5" Grid.Column="1" x:Name="cbBloodGroup" FontSize="18" Height="30">
-            <ComboBoxItem Content="Unknown" />
-            <ComboBoxItem Content="A+" />
-            <ComboBoxItem Content="A-" />
-            <ComboBoxItem Content="B+" />
-            <ComboBoxItem Content="B-" />
-            <ComboBoxItem Content="AB+" />
-            <ComboBoxItem Content="AB-" />
-            <ComboBoxItem Content="O+" />
-            <ComboBoxItem Content="O-" />
-        </ComboBox>
+        <ComboBox Grid.Row="5" Grid.Column="1" x:Name="cbBloodGroup" FontSize="18" Height="30" DisplayMemberPath="GroupName" SelectedValuePath="BloodGroupId"/>
 
 
         <!-- Title -->

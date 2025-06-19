@@ -104,3 +104,5 @@ C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSyst
 C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\AdminDisplay\EditBloodInventory.baml
 C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\AdminDisplay\EditUserInformation.g.cs
 C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\AdminDisplay\EditUserInformation.baml
+C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\HomePage.g.cs
+C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\HomePage.baml

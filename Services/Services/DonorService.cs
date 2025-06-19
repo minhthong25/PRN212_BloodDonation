@@ -13,10 +13,24 @@ namespace Services.Services
     public class DonorService : IDonorService
     {
         private readonly IGenericRepository<Donor> _donorRepository;
-
         public DonorService()
         {
             _donorRepository = new GenericRepository<Donor>();
+        }
+
+
+        public Donor CreateNewDonor(Donor donor)
+        {
+            try
+            {
+                _donorRepository.Add(donor);
+                _donorRepository.SaveChanges();
+                return donor;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error creating new donor", ex);
+            }
         }
 
         public Donor? GetDonorById(int id)
@@ -79,7 +93,5 @@ namespace Services.Services
                 throw new Exception($"Error deleting donor with ID {id}", ex);
             }
         }
-
-     
     }
 }

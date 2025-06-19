@@ -1,4 +1,8 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -21,10 +25,15 @@ namespace BloodBankSystem
     public partial class MainWindow : Window
     {
         private readonly IUserService _userService;
+        private readonly ILocationService _locationService;
+        private readonly IAppointmentService _appointmentService;
+
         public MainWindow()
         {
             InitializeComponent();
             _userService = new UserService();
+            _locationService = new LocationService();
+            _appointmentService = new AppointmentService();
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
@@ -42,17 +51,25 @@ namespace BloodBankSystem
             if (user != null)
             {
                 if(user.Role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                {
+                    try
                     {
-                    var adminDisplay = new AdminDisplay.AdminDisplay();
-                    adminDisplay.Show();
+                        var adminDisplay = new AdminDisplay.AdminDisplay();
+                        adminDisplay.Show();
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error opening Admin Display: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
                 else
                 {
                     var userDisplay = new UserDisplay.UserDisplay();
                     userDisplay.SetUser(user);
                     userDisplay.Show();
+                    this.Close();
                 }
-                this.Close();
             }
             else
             {

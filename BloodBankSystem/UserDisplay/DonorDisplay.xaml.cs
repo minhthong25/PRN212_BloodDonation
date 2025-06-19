@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Repository.Models;
 using Services.Services;
+using Services.Interface;
+
 
 namespace BloodBankSystem.UserDisplay
 {
@@ -21,7 +23,7 @@ namespace BloodBankSystem.UserDisplay
     /// </summary>
     public partial class DonorDisplay : Window
     {
-        private readonly UserService _userService;
+        private readonly IUserService _userService;
         private User _currentUser;
 
         public DonorDisplay()
