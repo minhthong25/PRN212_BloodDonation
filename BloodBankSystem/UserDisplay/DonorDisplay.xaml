@@ -65,6 +65,7 @@
                                     <StackPanel>
                                         <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16"/>
                                         <TextBlock Text="{Binding EventDate, StringFormat='Ngày tổ chức: {0:dd/MM/yyyy HH:mm}'}"/>
+                                        <TextBlock Text="{Binding EventEndDate, StringFormat='Ngày Kết thúc: {0:dd/MM/yyyy HH:mm}'}" />
                                         <TextBlock Text="{Binding Address, StringFormat='Địa điểm: {0}'}"/>
                                         <TextBlock Text="{Binding Description, StringFormat='Mô tả: {0}'}" TextWrapping="Wrap"/>
                                     </StackPanel>

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using BloodBankSystem.AdminDisplay;
+using Repository.Models;
+using Services.Interface;
+using Services.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,8 +15,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Repository.Models;
-using Services.Services;
 
 namespace BloodBankSystem.UserDisplay
 {
@@ -21,14 +23,13 @@ namespace BloodBankSystem.UserDisplay
     /// </summary>
     public partial class DonorDisplay : Window
     {
-        private readonly UserService _userService;
+        private readonly IAppointmentService _appointmentService;
         private User _currentUser;
-        private readonly LocationService _locationService;
+
         public DonorDisplay()
         {
             InitializeComponent();
-            _userService = new UserService();
-            _locationService = new LocationService();
+            _appointmentService = new AppointmentService();
         }
 
         public void SetUser(User user)
@@ -37,13 +38,14 @@ namespace BloodBankSystem.UserDisplay
             LoadDonorInfo();
             LoadTestResults();
             LoadAppointments();
-            LoadEvents(); // gọi load sưj kiện
+            LoadDonationHistory();
+            LoadEvents();
         }
 
-        private void LoadEvents() // thêm load sự kiện để người dùng đăng ký
+        private void LoadEvents()
         {
             var locationService = new LocationService();
-            var events = locationService.GetAllLocations(); 
+            var events = locationService.GetAllLocations();
             eventListBox.ItemsSource = events;
         }
 
@@ -114,6 +116,32 @@ namespace BloodBankSystem.UserDisplay
             }
         }
 
+        private void LoadDonationHistory()
+        {
+            if (_currentUser?.Donor?.Appointments != null)
+            {
+                var historyAppointments = _currentUser.Donor.Appointments
+                    .Where(a => a.IsCompleted)
+                    .OrderByDescending(a => a.AppointmentDate)
+                    .ToList();
+
+                if (historyAppointments.Any())
+                {
+                    var lastHistory = historyAppointments.First(); // Hiển thị lịch sử gần nhất
+                    txtAppointmentDate1.Text = $"Ngày hiến: {lastHistory.AppointmentDate:dd/MM/yyyy}";
+                    txtLocation1.Text = $"Địa điểm: {lastHistory.Location?.Name}, {lastHistory.Location?.Address}";
+                    txtStatus1.Text = "Trạng thái: Đã hoàn thành";
+                }
+                else
+                {
+                    txtAppointmentDate1.Text = "Không có lịch sử hiến máu";
+                    txtLocation1.Text = "";
+                    txtStatus1.Text = "";
+                }
+            }
+        }
+
+
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
             var userDisplay = new UserDisplay();
@@ -134,7 +162,38 @@ namespace BloodBankSystem.UserDisplay
 
         private void RegisterEvent_Click(object sender, RoutedEventArgs e)
         {
+            var selectedEvent = eventListBox.SelectedItem as Location;
+            if (selectedEvent == null)
+            {
+                MessageBox.Show("Vui lòng chọn một sự kiện để đăng ký.");
+                return;
+            }
 
+            if (_currentUser?.Donor == null)
+            {
+                MessageBox.Show("Không tìm thấy thông tin người hiến máu.");
+                return;
+            }
+
+            try
+            {
+                var appointment = new Appointment
+                {
+                    DonorId = _currentUser.Donor.DonorId,
+                    LocationId = selectedEvent.LocationId,
+                    AppointmentDate = selectedEvent.EventDate ?? DateTime.Now, // fallback nếu null
+                    IsCompleted = false
+                };
+
+                _appointmentService.AddAppointment(appointment);
+
+                MessageBox.Show("Đăng ký hiến máu thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                LoadAppointments(); // reload phần lịch hẹn
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đăng ký thất bại: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

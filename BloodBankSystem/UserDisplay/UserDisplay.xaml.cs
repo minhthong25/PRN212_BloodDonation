@@ -38,8 +38,10 @@ namespace BloodBankSystem.UserDisplay
 
         private void btnRegisterDonor_Click(object sender, RoutedEventArgs e)
         {
+            var userService = new UserService();
+            var fullUser = userService.GetUserWithDonor(_currentUser.UserId); 
             var donorDisplay = new DonorDisplay();
-            donorDisplay.SetUser(_currentUser);
+            donorDisplay.SetUser(fullUser);
             donorDisplay.Show();
             this.Close();
         }

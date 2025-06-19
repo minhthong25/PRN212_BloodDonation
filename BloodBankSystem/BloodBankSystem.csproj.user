@@ -37,6 +37,9 @@
     <Compile Update="UserDisplay\RecipientDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserDisplay\TimeSelectionWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserDisplay\UserInfo.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

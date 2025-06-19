@@ -210,3 +210,5 @@ C:\Users\ADMIN\Source\Repos\PRN212_BloodDonation\BloodBankSystem\obj\Debug\net8.
 C:\Users\ADMIN\Source\Repos\PRN212_BloodDonation\BloodBankSystem\obj\Debug\net8.0-windows\BloodBankSystem.pdb
 C:\Users\ADMIN\Source\Repos\PRN212_BloodDonation\BloodBankSystem\obj\Debug\net8.0-windows\BloodBankSystem.genruntimeconfig.cache
 C:\Users\ADMIN\Source\Repos\PRN212_BloodDonation\BloodBankSystem\obj\Debug\net8.0-windows\ref\BloodBankSystem.dll
+C:\Users\ADMIN\Source\Repos\PRN212_BloodDonation\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\TimeSelectionWindow.baml
+C:\Users\ADMIN\Source\Repos\PRN212_BloodDonation\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\TimeSelectionWindow.g.cs
