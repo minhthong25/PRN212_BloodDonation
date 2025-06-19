@@ -38,6 +38,8 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <!-- Full Name -->
@@ -64,50 +66,74 @@
                         Margin="0,0,0,10"
                         Padding="5"/>
 
-                <!-- Phone -->
-                <TextBlock Text="Phone Number:" 
+                <!-- Password -->
+                <TextBlock Text="Password:" 
                            Grid.Row="2" 
                            Grid.Column="0" 
                            Margin="0,0,10,10"
                            VerticalAlignment="Center"/>
-                <TextBox x:Name="txtPhone" 
+                <PasswordBox x:Name="txtPassword" 
                         Grid.Row="2" 
+                        Grid.Column="1" 
+                        Margin="0,0,0,10"
+                        Padding="5"/>
+
+                <!-- Confirm Password -->
+                <TextBlock Text="Confirm Password:" 
+                           Grid.Row="3" 
+                           Grid.Column="0" 
+                           Margin="0,0,10,10"
+                           VerticalAlignment="Center"/>
+                <PasswordBox x:Name="txtConfirmPassword" 
+                        Grid.Row="3" 
+                        Grid.Column="1" 
+                        Margin="0,0,0,10"
+                        Padding="5"/>
+
+                <!-- Phone -->
+                <TextBlock Text="Phone Number:" 
+                           Grid.Row="4" 
+                           Grid.Column="0" 
+                           Margin="0,0,10,10"
+                           VerticalAlignment="Center"/>
+                <TextBox x:Name="txtPhone" 
+                        Grid.Row="4" 
                         Grid.Column="1" 
                         Margin="0,0,0,10"
                         Padding="5"/>
 
                 <!-- Role -->
                 <TextBlock Text="Role:" 
-                           Grid.Row="3" 
+                           Grid.Row="5" 
                            Grid.Column="0" 
                            Margin="0,0,10,10"
                            VerticalAlignment="Center"/>
                 <TextBlock x:Name="txtRole" 
-                          Grid.Row="3" 
+                          Grid.Row="5" 
                           Grid.Column="1" 
                           Margin="0,0,0,10"
                           Padding="5"/>
 
                 <!-- Created At -->
                 <TextBlock Text="Create at:" 
-                           Grid.Row="4" 
+                           Grid.Row="6" 
                            Grid.Column="0" 
                            Margin="0,0,10,10"
                            VerticalAlignment="Center"/>
                 <TextBlock x:Name="txtCreatedAt" 
-                          Grid.Row="4" 
+                          Grid.Row="6" 
                           Grid.Column="1" 
                           Margin="0,0,0,10"
                           Padding="5"/>
 
                 <!-- Status -->
                 <TextBlock Text="Status:" 
-                           Grid.Row="5" 
+                           Grid.Row="7" 
                            Grid.Column="0" 
                            Margin="0,0,10,10"
                            VerticalAlignment="Center"/>
                 <TextBlock x:Name="txtStatus" 
-                          Grid.Row="5" 
+                          Grid.Row="7" 
                           Grid.Column="1" 
                           Margin="0,0,0,10"
                           Padding="5"/>

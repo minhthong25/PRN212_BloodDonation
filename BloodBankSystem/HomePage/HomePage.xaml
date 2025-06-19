@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BloodBankSystem"
         mc:Ignorable="d"
-        Title="Blood Bank System - Home" Height="600" Width="1000" WindowState="Maximized">
+        Title="Blood Hospital - Home" Height="600" Width="1000" WindowState="Maximized">
     <Window.Resources>
         <Style TargetType="DataGrid">
             <Setter Property="FontSize" Value="16"/>
@@ -41,7 +41,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Blood Bank Locations" 
+        <TextBlock Text="Blood Hospital" 
                    FontSize="24" 
                    FontWeight="Bold" 
                    Margin="20"

@@ -28,24 +28,28 @@ namespace BloodBankSystem.AdminDisplay
         {
             BloodEvent bloodEvent = new BloodEvent();
             bloodEvent.Show();
+            this.Close();
         }
 
         private void btnBloodInfo_Click(object sender, RoutedEventArgs e)
         {
             BloodInformations bloodInfo = new BloodInformations();
             bloodInfo.Show();
+            this.Close();
         }
 
         private void btnUserInfo_Click(object sender, RoutedEventArgs e)
         {
             UserInformation userInfo = new UserInformation();
             userInfo.Show();
+            this.Close();
         }
 
         private void btnUserRequest_Click(object sender, RoutedEventArgs e)
         {
             UserRequest userRequest = new UserRequest();
             userRequest.Show();
+            this.Close();
         }
     }
 }

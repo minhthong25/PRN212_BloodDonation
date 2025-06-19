@@ -20,5 +20,11 @@ namespace Services.Services
         {
             return _context.BloodGroups.ToList();
         }
+        public List<BloodGroup> GetAllBloodGroupNames()
+        {
+            return _context.BloodGroups
+                .Select(bg => new BloodGroup { BloodGroupId = bg.BloodGroupId, GroupName = bg.GroupName })
+                .ToList();
+        }
     }
 } 

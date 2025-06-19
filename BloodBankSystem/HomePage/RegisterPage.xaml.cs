@@ -90,7 +90,8 @@ namespace BloodBankSystem
                 Password = txtPassword.Password,
                 FullName = txtName.Text,
                 Phone = txtPhoneNumber.Text,
-                Role = "User" // Default role
+                Role = "User", // Default role
+                IsActive = true,
             };
 
             try

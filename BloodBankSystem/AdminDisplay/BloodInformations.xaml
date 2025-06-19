@@ -9,26 +9,23 @@
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <TextBlock Text="Blood Inventory Information" 
+        <TextBlock Grid.Row="0" Text="Blood Inventory Information" 
                    FontSize="24" 
                    FontWeight="Bold" 
                    Margin="0,0,0,20"
                    HorizontalAlignment="Center"/>
-
-        <!-- DataGrid -->
-        <DataGrid x:Name="dgBloodInventory" 
+        <!-- All Blood Groups Table -->
+        <DataGrid x:Name="dgAllBloodGroups"
                   Grid.Row="1"
                   AutoGenerateColumns="False"
-                  IsReadOnly="True"
-                  AlternatingRowBackground="LightGray"
-                  GridLinesVisibility="All"
-                  BorderBrush="Gray"
-                  BorderThickness="1"
+                  IsReadOnly="False"
+                  Margin="0,0,0,20"
                   CanUserAddRows="False"
                   CanUserDeleteRows="False"
                   CanUserReorderColumns="False"
@@ -37,48 +34,11 @@
                   SelectionMode="Single"
                   SelectionUnit="FullRow">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Blood Group" 
-                                  Binding="{Binding BloodGroup.GroupName}" 
-                                  Width="*"/>
-                <DataGridTextColumn Header="Quantity" 
-                                  Binding="{Binding Quantity}" 
-                                  Width="*"/>
-                <DataGridTextColumn Header="Last Updated" 
-                                  Binding="{Binding UpdatedAt, StringFormat=dd/MM/yyyy HH:mm}" 
-                                  Width="*"/>
-                <DataGridTemplateColumn Header="Action" Width="100">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="Edit" 
-                                    Click="EditButton_Click"
-                                    Width="80"
-                                    Height="30"
-                                    Margin="5"
-                                    Background="#2196F3"
-                                    Foreground="White"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Blood Group" Binding="{Binding GroupName}" Width="*" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                <DataGridTextColumn Header="Last Updated" Binding="{Binding UpdatedAt, StringFormat=dd/MM/yyyy HH:mm}" Width="*" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
-
-        <!-- Buttons -->
-        <StackPanel Grid.Row="2" 
-                    Orientation="Horizontal" 
-                    HorizontalAlignment="Right" 
-                    Margin="10">
-            <Button x:Name="btnSave" 
-                    Content="Save" 
-                    Width="80" 
-                    Margin="5,0" 
-                    Click="btnSave_Click"
-                    Visibility="Collapsed"/>
-            <Button x:Name="btnCancel" 
-                    Content="Cancel" 
-                    Width="80" 
-                    Margin="5,0" 
-                    Click="btnCancel_Click"
-                    Visibility="Collapsed"/>
-        </StackPanel>
+        <Button x:Name="btnSave" Content="Save" Grid.Row="2" Width="100" Height="35" HorizontalAlignment="Right" Margin="0,0,0,10" Click="btnSave_Click"/>
     </Grid>
 </Window>

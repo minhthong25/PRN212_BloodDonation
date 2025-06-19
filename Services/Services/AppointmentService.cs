@@ -22,18 +22,6 @@ namespace Services.Services
                 return _appointmentRepository.GetAll().ToList();
         }
 
-        public Appointment? GetAppointmentById(int id)
-        {
-            try
-            {
-                return _appointmentRepository.FirstOrDefault(a => a.AppointmentId == id);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error retrieving appointment with ID {id}", ex);
-            }
-        }
-
         public void AddAppointment(Appointment appointment)
         {
             try
@@ -103,7 +91,6 @@ namespace Services.Services
             }
         }
 
-       
         public Appointment? GetAppointmentByDate(DateTime date)
         {
             try
@@ -113,6 +100,18 @@ namespace Services.Services
             catch (Exception ex)
             {
                 throw new Exception($"Error retrieving appointment for date {date}", ex);
+            }
+        }
+
+        public List<Appointment> GetAppointmentsByDonorId(int donorId)
+        {
+            try
+            {
+                return _appointmentRepository.GetAll().Where(a => a.DonorId == donorId).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error retrieving appointments for donor with ID {donorId}", ex);
             }
         }
     }

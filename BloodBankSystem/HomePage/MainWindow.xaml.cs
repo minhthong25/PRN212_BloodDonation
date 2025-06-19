@@ -50,7 +50,12 @@ namespace BloodBankSystem
             User? user = _userService.checkLogin(email, password);
             if (user != null)
             {
-                if(user.Role.Equals("Admin", StringComparison.OrdinalIgnoreCase))
+                if (!user.IsActive)
+                {
+                    MessageBox.Show("Your account is unactive", "Account Inactive", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                if(user.Role.Equals("Admin", StringComparison.OrdinalIgnoreCase) || user.Role.Equals("Staff", StringComparison.OrdinalIgnoreCase))
                 {
                     try
                     {

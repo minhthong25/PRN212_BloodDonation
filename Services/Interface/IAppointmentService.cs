@@ -4,9 +4,10 @@ namespace Services.Interface
 {
     public interface IAppointmentService
     {
-        Appointment? GetAppointmentById(int id);
+        List<Appointment> GetAllAppointments();
         void AddAppointment(Appointment appointment);
         void UpdateAppointment(Appointment appointment);
         void DeleteAppointment(int id);
+        List<Appointment> GetAppointmentsByDonorId(int donorId);
     }
 } 

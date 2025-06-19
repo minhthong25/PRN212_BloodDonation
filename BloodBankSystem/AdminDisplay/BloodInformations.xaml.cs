@@ -13,97 +13,82 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Services.Services;
 using Repository.Models;
+using Services.Interface;
 
 namespace BloodBankSystem.AdminDisplay
 {
+    public class BloodGroupInventoryViewModel
+    {
+        public string GroupName { get; set; }
+        public int Quantity { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+    }
+
     /// <summary>
     /// Interaction logic for BloodInformations.xaml
     /// </summary>
     public partial class BloodInformations : Window
     {
-        private readonly BloodInventoryService _bloodInventoryService;
-        private BloodInventory _selectedInventory;
-        private bool _isEditing = false;
+        private readonly IBloodGroupService _bloodGroupService;
+        private readonly IBloodInventoryService _bloodInventoryService;
 
         public BloodInformations()
         {
             InitializeComponent();
+            _bloodGroupService = new BloodGroupService();
             _bloodInventoryService = new BloodInventoryService();
-            LoadBloodInventory();
+            LoadAllBloodGroupsTable();
         }
 
-        private void LoadBloodInventory()
+        private void LoadAllBloodGroupsTable()
         {
-            try
-            {
-                var bloodInventory = _bloodInventoryService.GetAllBloodInventory();
-                if (bloodInventory != null && bloodInventory.Any())
-                {
-                    dgBloodInventory.ItemsSource = bloodInventory;
-                }
-                else
-                {
-                    MessageBox.Show("No blood inventory data available.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading blood inventory: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            var button = sender as Button;
-            _selectedInventory = button.DataContext as BloodInventory;
-            
-            if (_selectedInventory == null) return;
-
-            var editWindow = new EditBloodInventory(_selectedInventory);
-            editWindow.Owner = this;
-            
-            if (editWindow.ShowDialog() == true && editWindow.IsUpdated)
-            {
-                _selectedInventory.Quantity = editWindow.NewQuantity;
-                SetEditMode(true);
-            }
-        }
-
-        private void SetEditMode(bool isEditing)
-        {
-            _isEditing = isEditing;
-            btnSave.Visibility = isEditing ? Visibility.Visible : Visibility.Collapsed;
-            btnCancel.Visibility = isEditing ? Visibility.Visible : Visibility.Collapsed;
+            var groups = _bloodGroupService.GetAllBloodGroups();
+            var inventory = _bloodInventoryService.GetAllBloodInventory();
+            var list = groups
+                .Where(g => g.GroupName != "Unknown")
+                .Select(g => {
+                    var inv = inventory.FirstOrDefault(i => i.BloodGroupId == g.BloodGroupId);
+                    return new BloodGroupInventoryViewModel
+                    {
+                        GroupName = g.GroupName,
+                        Quantity = inv?.Quantity ?? 0,
+                        UpdatedAt = inv?.UpdatedAt
+                    };
+                }).ToList();
+            dgAllBloodGroups.ItemsSource = list;
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            if (_selectedInventory == null) return;
+            var list = dgAllBloodGroups.ItemsSource as List<BloodGroupInventoryViewModel>;
+            if (list == null) return;
 
-            try
+            foreach (var item in list)
             {
-                var result = _bloodInventoryService.UpdateBloodInventory(_selectedInventory.BloodGroupId, _selectedInventory.Quantity);
-                if (result != null)
+                if (item.Quantity <= 0)
                 {
-                    MessageBox.Show("Quantity updated successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                    LoadBloodInventory(); // Refresh the grid
-                    SetEditMode(false);
-                }
-                else
-                {
-                    MessageBox.Show("Failed to update quantity.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"Quantity for group {item.GroupName} must be a positive number!", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error updating quantity: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            LoadBloodInventory(); // Reset to original values
-            SetEditMode(false);
+            var inventory = _bloodInventoryService.GetAllBloodInventory();
+            var groups = _bloodGroupService.GetAllBloodGroups();
+
+            foreach (var item in list)
+            {
+                var group = groups.FirstOrDefault(g => g.GroupName == item.GroupName);
+                if (group == null) continue;
+                var inv = inventory.FirstOrDefault(i => i.BloodGroupId == group.BloodGroupId);
+                if (inv != null && inv.Quantity != item.Quantity)
+                {
+                    inv.Quantity = item.Quantity;
+                    inv.UpdatedAt = DateTime.Now;
+                    _bloodInventoryService.UpdateBloodInventory(inv.BloodGroupId, inv.Quantity);
+                }
+            }
+            MessageBox.Show("Update Success", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
+            LoadAllBloodGroupsTable();
         }
     }
 }

@@ -11,7 +11,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 using Repository.Models;
+using Services.Interface;
+using Services.Services;
 
 namespace BloodBankSystem.AdminDisplay
 {
@@ -21,6 +24,7 @@ namespace BloodBankSystem.AdminDisplay
     public partial class EditUserInformation : Window
     {
         private readonly User _user;
+        private readonly IUserService _userService;
         public bool IsUpdated { get; private set; }
         public User UpdatedUser { get; private set; }
 
@@ -28,6 +32,7 @@ namespace BloodBankSystem.AdminDisplay
         {
             InitializeComponent();
             _user = user;
+            _userService = new UserService();
             LoadData();
         }
 
@@ -53,6 +58,27 @@ namespace BloodBankSystem.AdminDisplay
             if (cmbRole.SelectedItem == null)
             {
                 MessageBox.Show("Please select a role.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // Validate name format
+            if (!_userService.ValidName(txtFullName.Text))
+            {
+                MessageBox.Show("Name can only contain letters, spaces, and Vietnamese characters!", "Change Profile Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Validate phone number format
+            if (!string.IsNullOrWhiteSpace(txtPhone.Text) && !_userService.ValidPhoneNumber(txtPhone.Text))
+            {
+                MessageBox.Show("Invalid phone number format! Phone number must be 10-11 digits.", "Change Profile Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Check for duplicate phone number (if changed)
+            if (!string.IsNullOrWhiteSpace(txtPhone.Text) && txtPhone.Text != _user.Phone && _userService.IsPhoneNumberExists(txtPhone.Text))
+            {
+                MessageBox.Show("This phone number is already registered!", "Change Profile Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 

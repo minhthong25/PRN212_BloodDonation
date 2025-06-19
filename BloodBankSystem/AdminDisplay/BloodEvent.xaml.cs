@@ -4,17 +4,18 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Repository.Models;
+using Services.Interface;
 using Services.Services;
 
 namespace BloodBankSystem.AdminDisplay
 {
-    /// <summary>
-    /// Interaction logic for BloodEvent.xaml
-    /// </summary>
+    /// <summary>  
+    /// Interaction logic for BloodEvent.xaml  
+    /// </summary>  
     public partial class BloodEvent : Window
     {
-        private readonly LocationService _locationService;
-        private readonly AppointmentService _appointmentService;
+        private readonly ILocationService _locationService;
+        private readonly IAppointmentService _appointmentService;
 
         public BloodEvent()
         {
@@ -28,14 +29,14 @@ namespace BloodBankSystem.AdminDisplay
         {
             try
             {
-                // Load locations
+                // Load locations  
                 var locations = _locationService.GetAllLocations();
                 if (locations != null && locations.Any())
                 {
                     dgLocations.ItemsSource = locations;
                 }
 
-                // Load appointments
+                // Load appointments  
                 var appointments = _appointmentService.GetAllAppointments();
                 if (appointments != null && appointments.Any())
                 {
@@ -52,10 +53,10 @@ namespace BloodBankSystem.AdminDisplay
         {
             var button = sender as Button;
             var location = button.DataContext as Location;
-            
+
             if (location == null) return;
 
-            // TODO: Open edit location window
+            // TODO: Open edit location window  
             MessageBox.Show("Edit location functionality will be implemented soon.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -63,22 +64,22 @@ namespace BloodBankSystem.AdminDisplay
         {
             var button = sender as Button;
             var appointment = button.DataContext as Appointment;
-            
+
             if (appointment == null) return;
 
-            // TODO: Open edit appointment window
+            // TODO: Open edit appointment window  
             MessageBox.Show("Edit appointment functionality will be implemented soon.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void btnAddLocation_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Open add location window
+            // TODO: Open add location window  
             MessageBox.Show("Add location functionality will be implemented soon.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void btnAddAppointment_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Open add appointment window
+            // TODO: Open add appointment window  
             MessageBox.Show("Add appointment functionality will be implemented soon.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }

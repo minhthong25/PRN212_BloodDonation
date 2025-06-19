@@ -3,6 +3,7 @@ using System.Windows;
 using Repository.Models;
 using Services.Services;
 using Services.Interface;
+using System.Xml.Linq;
 
 namespace BloodBankSystem.UserDisplay
 {
@@ -32,12 +33,41 @@ namespace BloodBankSystem.UserDisplay
         {
             if (_currentUser != null)
             {
+                txtPassword.Password = _currentUser.Password;
+                txtConfirmPassword.Password = _currentUser.Password;
                 txtFullName.Text = _currentUser.FullName;
                 txtEmail.Text = _currentUser.Email;
                 txtPhone.Text = _currentUser.Phone ?? "Chưa cập nhật";
                 txtRole.Text = _currentUser.Role;
                 txtCreatedAt.Text = _currentUser.CreatedAt.ToString("dd/MM/yyyy");
                 txtStatus.Text = _currentUser.IsActive ? "Hoạt động" : "Không hoạt động";
+            }
+            // Validate password match
+            if (txtPassword.Password != txtConfirmPassword.Password)
+            {
+                MessageBox.Show("Passwords do not match!", "Change Profile Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Validate name format
+            if (!_userService.ValidName(txtFullName.Text))
+            {
+                MessageBox.Show("Name can only contain letters, spaces, and Vietnamese characters!", "Change Profile Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Validate phone number format
+            if (!_userService.ValidPhoneNumber(txtPhone.Text))
+            {
+                MessageBox.Show("Invalid phone number format! Phone number must be 10-11 digits.", "Change Profile Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Check for duplicate phone number
+            if (_userService.IsPhoneNumberExists(txtPhone.Text))
+            {
+                MessageBox.Show("This phone number is already registered!", "Change Profile Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
         }
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BloodBankSystem.UserDisplay"
         mc:Ignorable="d"
-        Title="RecipientDisplay" WindowState="Maximized" Height="450" Width="800">
+        Title="RecipientDisplay" WindowState="Maximized" Height="550" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

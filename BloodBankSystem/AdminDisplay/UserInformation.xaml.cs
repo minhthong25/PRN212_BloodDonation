@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Services.Services;
 using Repository.Models;
+using Services.Interface;
 
 namespace BloodBankSystem.AdminDisplay
 {
@@ -21,7 +22,7 @@ namespace BloodBankSystem.AdminDisplay
     /// </summary>
     public partial class UserInformation : Window
     {
-        private readonly UserService _userService;
+        private readonly IUserService _userService;
         private User _selectedUser;
         private bool _isEditing = false;
 

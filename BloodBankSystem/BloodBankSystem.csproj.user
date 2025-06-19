@@ -16,7 +16,7 @@
     <Compile Update="AdminDisplay\BloodInformations.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="AdminDisplay\EditBloodInventory.xaml.cs">
+    <Compile Update="AdminDisplay\EditBloodEvent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="AdminDisplay\EditUserInformation.xaml.cs">
@@ -28,7 +28,7 @@
     <Compile Update="AdminDisplay\UserRequest.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="RegisterPage.xaml.cs">
+    <Compile Update="HomePage\RegisterPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UserDisplay\DonorDisplay.xaml.cs">
@@ -51,7 +51,7 @@
     <Page Update="AdminDisplay\BloodInformations.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="AdminDisplay\EditBloodInventory.xaml">
+    <Page Update="AdminDisplay\EditBloodEvent.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="AdminDisplay\EditUserInformation.xaml">
@@ -63,10 +63,10 @@
     <Page Update="AdminDisplay\UserRequest.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainWindow.xaml">
+    <Page Update="HomePage\MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="RegisterPage.xaml">
+    <Page Update="HomePage\RegisterPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserDisplay\DonorDisplay.xaml">
