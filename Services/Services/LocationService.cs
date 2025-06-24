@@ -59,7 +59,16 @@ namespace Services.Services
                 if (location == null)
                     throw new ArgumentNullException(nameof(location));
 
-                _locationRepository.Update(location);
+                // Lấy entity từ DB để đảm bảo đang được EF theo dõi
+                var existing = _locationRepository.GetById(location.LocationId);
+                if (existing == null)
+                    throw new Exception($"Location with ID {location.LocationId} not found.");
+
+                // Cập nhật giá trị
+                existing.Name = location.Name;
+                existing.Address = location.Address;
+
+                // Nếu GenericRepository dùng DbContext tracking, chỉ cần SaveChanges()
                 _locationRepository.SaveChanges();
             }
             catch (Exception ex)
