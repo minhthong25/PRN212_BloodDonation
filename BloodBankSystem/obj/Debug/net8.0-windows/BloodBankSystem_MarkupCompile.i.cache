@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\ADMIN\Source\Repos\PRN212_BloodDonation\BloodBankSystem\App.xaml
-141370419649
+151137898855
 
-19-946039639
+20-1992981151
 246-379162191
-AdminDisplay\AdminDisplay.xaml;AdminDisplay\BloodEvent.xaml;AdminDisplay\BloodInformations.xaml;AdminDisplay\EditBloodInventory.xaml;AdminDisplay\EditUserInformation.xaml;AdminDisplay\UserInformation.xaml;AdminDisplay\UserRequest.xaml;MainWindow.xaml;RegisterPage.xaml;UserDisplay\DonorDisplay.xaml;UserDisplay\RecipientDisplay.xaml;UserDisplay\TimeSelectionWindow.xaml;UserDisplay\UserDisplay.xaml;UserDisplay\UserInfo.xaml;
+AdminDisplay\AdminDisplay.xaml;AdminDisplay\BloodEvent.xaml;AdminDisplay\BloodInformations.xaml;AdminDisplay\EditBloodInventory.xaml;AdminDisplay\EditUserInformation.xaml;AdminDisplay\UserInformation.xaml;AdminDisplay\UserRequest.xaml;MainWindow.xaml;RegisterPage.xaml;UserDisplay\DonorDisplay.xaml;UserDisplay\EditAppointmentWindow.xaml;UserDisplay\RecipientDisplay.xaml;UserDisplay\TimeSelectionWindow.xaml;UserDisplay\UserDisplay.xaml;UserDisplay\UserInfo.xaml;
 
-True
+False
 

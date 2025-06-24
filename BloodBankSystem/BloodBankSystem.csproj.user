@@ -34,6 +34,9 @@
     <Compile Update="UserDisplay\DonorDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserDisplay\EditAppointmentWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserDisplay\RecipientDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

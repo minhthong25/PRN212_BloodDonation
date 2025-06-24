@@ -5,31 +5,23 @@ using Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace BloodBankSystem.UserDisplay
 {
-    /// <summary>
-    /// Interaction logic for DonorDisplay.xaml
-    /// </summary>
     public partial class DonorDisplay : Window
     {
         private readonly IAppointmentService _appointmentService;
+        private readonly IUserService _userService;
         private User _currentUser;
+        private Appointment? _upcomingAppointment;
 
         public DonorDisplay()
         {
             InitializeComponent();
             _appointmentService = new AppointmentService();
+            _userService = new UserService(); 
         }
 
         public void SetUser(User user)
@@ -73,7 +65,7 @@ namespace BloodBankSystem.UserDisplay
 
         private void LoadTestResults()
         {
-            if (_currentUser?.Donor?.TestResults != null && _currentUser.Donor.TestResults.Any())
+            if (_currentUser?.Donor?.TestResults?.Any() == true)
             {
                 var latestTest = _currentUser.Donor.TestResults.OrderByDescending(t => t.TestDate).First();
                 txtTestDate.Text = $"Ngày xét nghiệm: {latestTest.TestDate:dd/MM/yyyy}";
@@ -88,29 +80,20 @@ namespace BloodBankSystem.UserDisplay
 
         private void LoadAppointments()
         {
-            if (_currentUser?.Donor?.Appointments != null && _currentUser.Donor.Appointments.Any())
-            {
-                var upcomingAppointment = _currentUser.Donor.Appointments
-                    .Where(a => !a.IsCompleted && a.AppointmentDate > DateTime.Now)
-                    .OrderBy(a => a.AppointmentDate)
-                    .FirstOrDefault();
+            _upcomingAppointment = _currentUser?.Donor?.Appointments?
+                .Where(a => !a.IsCompleted && a.AppointmentDate > DateTime.Now)
+                .OrderBy(a => a.AppointmentDate)
+                .FirstOrDefault();
 
-                if (upcomingAppointment != null)
-                {
-                    txtAppointmentDate.Text = $"Ngày hẹn: {upcomingAppointment.AppointmentDate:dd/MM/yyyy}";
-                    txtLocation.Text = $"Địa điểm: {upcomingAppointment.Location?.Name}, {upcomingAppointment.Location?.Address}";
-                    txtStatus.Text = $"Trạng thái: {(upcomingAppointment.IsCompleted ? "Đã hoàn thành" : "Chưa hoàn thành")}";
-                }
-                else
-                {
-                    txtAppointmentDate.Text = "Không có lịch hẹn sắp tới";
-                    txtLocation.Text = string.Empty;
-                    txtStatus.Text = string.Empty;
-                }
+            if (_upcomingAppointment != null)
+            {
+                txtAppointmentDate.Text = $"Ngày hẹn: {_upcomingAppointment.AppointmentDate:dd/MM/yyyy HH:mm}";
+                txtLocation.Text = $"Địa điểm: {_upcomingAppointment.Location?.Name}, {_upcomingAppointment.Location?.Address}";
+                txtStatus.Text = "Trạng thái: Chưa hoàn thành";
             }
             else
             {
-                txtAppointmentDate.Text = "Không có lịch hẹn";
+                txtAppointmentDate.Text = "Không có lịch hẹn sắp tới";
                 txtLocation.Text = string.Empty;
                 txtStatus.Text = string.Empty;
             }
@@ -120,27 +103,21 @@ namespace BloodBankSystem.UserDisplay
         {
             if (_currentUser?.Donor?.Appointments != null)
             {
-                var historyAppointments = _currentUser.Donor.Appointments
+                var completed = _currentUser.Donor.Appointments
                     .Where(a => a.IsCompleted)
                     .OrderByDescending(a => a.AppointmentDate)
                     .ToList();
 
-                if (historyAppointments.Any())
+                if (completed.Any())
                 {
-                    var lastHistory = historyAppointments.First(); // Hiển thị lịch sử gần nhất
-                    txtAppointmentDate1.Text = $"Ngày hiến: {lastHistory.AppointmentDate:dd/MM/yyyy}";
-                    txtLocation1.Text = $"Địa điểm: {lastHistory.Location?.Name}, {lastHistory.Location?.Address}";
-                    txtStatus1.Text = "Trạng thái: Đã hoàn thành";
+                    historyListBox.ItemsSource = completed;
                 }
                 else
                 {
-                    txtAppointmentDate1.Text = "Không có lịch sử hiến máu";
-                    txtLocation1.Text = "";
-                    txtStatus1.Text = "";
+                    historyListBox.ItemsSource = new List<string> { "Không có lịch sử hiến máu" };
                 }
             }
         }
-
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
@@ -153,11 +130,6 @@ namespace BloodBankSystem.UserDisplay
         private void Window_Closed(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private void eventListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         private void RegisterEvent_Click(object sender, RoutedEventArgs e)
@@ -175,25 +147,135 @@ namespace BloodBankSystem.UserDisplay
                 return;
             }
 
+            var hasUpcoming = _currentUser.Donor.Appointments
+                .Any(a => !a.IsCompleted && a.AppointmentDate >= DateTime.Now);
+
+            if (hasUpcoming)
+            {
+                MessageBox.Show("Bạn đã có một lịch hẹn chưa hoàn thành. Không thể đăng ký thêm.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Mở cửa sổ chọn ngày giờ
+            if (selectedEvent.EventDate == null || selectedEvent.EventEndDate == null)
+            {
+                MessageBox.Show("Sự kiện không có thời gian hợp lệ.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var timeWindow = new TimeSelectionWindow(selectedEvent.EventDate.Value, selectedEvent.EventEndDate.Value);
+
+            if (timeWindow.ShowDialog() != true || timeWindow.SelectedDateTime == null)
+            {
+                MessageBox.Show("Vui lòng chọn thời gian hợp lệ.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            DateTime selectedDate = timeWindow.SelectedDateTime.Value;
+
+            if (selectedDate < selectedEvent.EventDate || selectedDate > selectedEvent.EventEndDate)
+            {
+                MessageBox.Show("Lịch hẹn phải nằm trong thời gian tổ chức sự kiện.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             try
             {
                 var appointment = new Appointment
                 {
                     DonorId = _currentUser.Donor.DonorId,
                     LocationId = selectedEvent.LocationId,
-                    AppointmentDate = selectedEvent.EventDate ?? DateTime.Now, // fallback nếu null
+                    AppointmentDate = selectedDate,
                     IsCompleted = false
                 };
 
                 _appointmentService.AddAppointment(appointment);
-
                 MessageBox.Show("Đăng ký hiến máu thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-                LoadAppointments(); // reload phần lịch hẹn
+
+                // Reload lại user sau khi thêm lịch hẹn
+                _currentUser = _userService.GetUserWithDonor(_currentUser.UserId);
+                LoadAppointments();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Đăng ký thất bại: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+
+
+
+        private void EditAppointment_Click(object sender, RoutedEventArgs e)
+        {
+            if (_upcomingAppointment == null)
+            {
+                MessageBox.Show("Không có lịch hẹn để sửa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var editWindow = new EditAppointmentWindow(_upcomingAppointment.AppointmentDate);
+            if (editWindow.ShowDialog() == true)
+            {
+                DateTime newDate = editWindow.SelectedDateTime.Value;
+
+                var eventStart = _upcomingAppointment.Location?.EventDate;
+                var eventEnd = _upcomingAppointment.Location?.EventEndDate;
+
+                if (eventStart == null || eventEnd == null || newDate < eventStart || newDate > eventEnd)
+                {
+                    MessageBox.Show($"Ngày hẹn phải nằm trong thời gian tổ chức sự kiện:\n{eventStart:dd/MM/yyyy HH:mm} - {eventEnd:dd/MM/yyyy HH:mm}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                try
+                {
+                    _upcomingAppointment.AppointmentDate = newDate;
+                    _appointmentService.UpdateAppointment(_upcomingAppointment);
+
+                    MessageBox.Show("Cập nhật lịch hẹn thành công.", "Thành công", MessageBoxButton.OK, MessageBoxImage.Information);
+                    ReloadUser();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi cập nhật lịch hẹn: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+
+        private void DeleteAppointment_Click(object sender, RoutedEventArgs e)
+        {
+            if (_upcomingAppointment == null)
+            {
+                MessageBox.Show("Không có lịch hẹn để xóa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var confirm = MessageBox.Show("Bạn có chắc muốn xóa lịch hẹn này?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (confirm == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    _appointmentService.DeleteAppointment(_upcomingAppointment.AppointmentId);
+
+                    // Reload dữ liệu
+                    ReloadUser();
+
+                    MessageBox.Show("Xóa lịch hẹn thành công.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi khi xóa lịch hẹn: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+
+        private void ReloadUser()
+        {
+            _currentUser = _userService.GetUserWithDonor(_currentUser.UserId)!;
+            LoadAppointments();
+            LoadDonationHistory();
         }
     }
 }

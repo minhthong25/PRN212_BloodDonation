@@ -1,31 +1,27 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 
-namespace BloodBankSystem.UserDisplay
+namespace BloodBankSystem.UserDisplay // 🔥 Phải TRÙNG chính xác với x:Class trong .xaml
 {
-    public partial class TimeSelectionWindow : Window
+    public partial class EditAppointmentWindow : Window
     {
         public DateTime? SelectedDateTime { get; private set; }
 
-        public TimeSelectionWindow(DateTime eventStart, DateTime eventEnd)
+        public EditAppointmentWindow(DateTime currentAppointmentTime)
         {
             InitializeComponent();
 
-            // Giới hạn ngày cho DatePicker theo thời gian sự kiện
-            datePicker.DisplayDateStart = eventStart.Date;
-            datePicker.DisplayDateEnd = eventEnd.Date;
+            datePicker.SelectedDate = currentAppointmentTime.Date;
 
-            // Tạo danh sách giờ và phút
             for (int h = 0; h <= 24; h++) hourBox.Items.Add(h.ToString("D2"));
             for (int m = 0; m <= 60; m += 1) minuteBox.Items.Add(m.ToString("D2"));
 
-            // Mặc định là giờ bắt đầu sự kiện
-            datePicker.SelectedDate = eventStart.Date;
-            hourBox.SelectedItem = eventStart.Hour.ToString("D2");
-            minuteBox.SelectedItem = eventStart.Minute.ToString("D2");
+            hourBox.SelectedItem = currentAppointmentTime.Hour.ToString("D2");
+            minuteBox.SelectedItem = currentAppointmentTime.Minute.ToString("D2");
         }
 
-        private void Confirm_Click(object sender, RoutedEventArgs e)
+        private void Save_Click(object sender, RoutedEventArgs e)
         {
             if (datePicker.SelectedDate == null || hourBox.SelectedItem == null || minuteBox.SelectedItem == null)
             {

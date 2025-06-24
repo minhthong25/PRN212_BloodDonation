@@ -1,7 +1,7 @@
-﻿<Window x:Class="BloodBankSystem.UserDisplay.TimeSelectionWindow"
+﻿<Window x:Class="BloodBankSystem.UserDisplay.EditAppointmentWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Chọn thời gian hiến máu"
+        Title="Sửa lịch hẹn"
         Height="220"
         Width="350"
         WindowStartupLocation="CenterScreen">
@@ -30,11 +30,10 @@
             <Button Content="Xác nhận"
                     Width="80"
                     Margin="0,0,10,0"
-                    Click="Confirm_Click" />
+                    Click="Save_Click" />
             <Button Content="Huỷ"
                     Width="80"
                     Click="Cancel_Click" />
         </StackPanel>
     </StackPanel>
 </Window>
-

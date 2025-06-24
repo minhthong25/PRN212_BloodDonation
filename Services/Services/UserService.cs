@@ -81,7 +81,8 @@ namespace Services.Services
 
         public User? GetUserWithDonor(int userId)
         {
-            return _context.Users
+            using var context = new BloodDonationDbContext();
+            return context.Users
                 .Include(u => u.Donor)
                     .ThenInclude(d => d.BloodGroup)
                 .Include(u => u.Donor)
