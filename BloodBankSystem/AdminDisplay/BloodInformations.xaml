@@ -21,7 +21,7 @@
                    Margin="0,0,0,20"
                    HorizontalAlignment="Center"/>
         <!-- All Blood Groups Table -->
-        <DataGrid x:Name="dgAllBloodGroups"
+        <DataGrid x:Name="dgAllBloodGroups" d:ItemsSource="{d:SampleData ItemCount=5}"
                   Grid.Row="1"
                   AutoGenerateColumns="False"
                   IsReadOnly="False"

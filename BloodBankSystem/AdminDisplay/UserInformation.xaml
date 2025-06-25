@@ -21,7 +21,7 @@
                    HorizontalAlignment="Center"/>
 
         <!-- DataGrid -->
-        <DataGrid x:Name="dgUsers" 
+        <DataGrid x:Name="dgUsers" d:ItemsSource="{d:SampleData ItemCount=5}" 
                   Grid.Row="1"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
@@ -38,7 +38,7 @@
                   SelectionUnit="FullRow">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" 
-                                  Binding="{Binding UserId}" 
+                                  Binding="{Binding UserId }" 
                                   Width="50"/>
                 <DataGridTextColumn Header="Full Name" 
                                   Binding="{Binding FullName}" 

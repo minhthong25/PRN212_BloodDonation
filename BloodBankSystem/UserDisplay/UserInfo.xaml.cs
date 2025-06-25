@@ -64,7 +64,7 @@ namespace BloodBankSystem.UserDisplay
             }
 
             // Check for duplicate phone number
-            if (_userService.IsPhoneNumberExists(txtPhone.Text))
+            if (!_userService.IsPhoneNumberExists(txtPhone.Text))
             {
                 MessageBox.Show("This phone number is already registered!", "Change Profile Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;

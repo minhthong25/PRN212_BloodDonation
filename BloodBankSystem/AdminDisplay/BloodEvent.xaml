@@ -25,7 +25,7 @@
         <GroupBox Grid.Row="1" 
                   Header="Donation Locations" 
                   Margin="0,0,0,20">
-            <DataGrid x:Name="dgLocations" 
+            <DataGrid x:Name="dgLocations" d:ItemsSource="{d:SampleData ItemCount=2}"
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
                       AlternatingRowBackground="LightGray"
@@ -71,7 +71,7 @@
         <GroupBox Grid.Row="2" 
                   Header="Donation Appointments" 
                   Margin="0,0,0,20">
-            <DataGrid x:Name="dgAppointments" 
+            <DataGrid x:Name="dgAppointments" d:ItemsSource="{d:SampleData ItemCount=2}"
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
                       AlternatingRowBackground="LightGray"
