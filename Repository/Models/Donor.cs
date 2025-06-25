@@ -6,6 +6,7 @@ namespace Repository.Models;
 public partial class Donor
 {
     public int DonorId { get; set; }
+    public int UserId { get; set; } 
 
     public int BloodGroupId { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using Repository.Interface;
+﻿using Microsoft.EntityFrameworkCore;
+using Repository.Interface;
 using Repository.Models;
 using Repository.Repository;
 using Services.Interface;
@@ -13,10 +14,12 @@ namespace Services.Services
     public class UserService : IUserService
     {
         private readonly IGenericRepository<User> _userRepository;
+        private readonly BloodDonationDbContext _context;
 
         public UserService()
         {
             _userRepository = new GenericRepository<User>();
+            _context = new BloodDonationDbContext();
         }
 
 
@@ -75,5 +78,20 @@ namespace Services.Services
             _userRepository.Update(existingUser);
             _userRepository.Save();
         }
+
+        public User? GetUserWithDonor(int userId)
+        {
+            using var context = new BloodDonationDbContext();
+            return context.Users
+                .Include(u => u.Donor)
+                    .ThenInclude(d => d.BloodGroup)
+                .Include(u => u.Donor)
+                    .ThenInclude(d => d.TestResults)
+                .Include(u => u.Donor)
+                    .ThenInclude(d => d.Appointments)
+                        .ThenInclude(a => a.Location)
+                .FirstOrDefault(u => u.UserId == userId);
+        }
+
     }
 }

@@ -14,5 +14,7 @@ namespace Services.Interface
         User? Register(User user);
 
         void UpdateUser(User user);
+        User? GetUserWithDonor(int userId);
+
     }
 }
