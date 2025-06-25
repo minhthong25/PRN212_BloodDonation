@@ -16,5 +16,5 @@ C:\Users\ADMIN\Source\Repos\PRN212_BloodDonation\BloodBankSystem\App.xaml
 246-379162191
 AdminDisplay\AdminDisplay.xaml;AdminDisplay\BloodEvent.xaml;AdminDisplay\BloodInformations.xaml;AdminDisplay\EditBloodInventory.xaml;AdminDisplay\EditUserInformation.xaml;AdminDisplay\UserInformation.xaml;AdminDisplay\UserRequest.xaml;MainWindow.xaml;RegisterPage.xaml;UserDisplay\DonorDisplay.xaml;UserDisplay\EditAppointmentWindow.xaml;UserDisplay\RecipientDisplay.xaml;UserDisplay\TimeSelectionWindow.xaml;UserDisplay\UserDisplay.xaml;UserDisplay\UserInfo.xaml;
 
-False
+True
 
