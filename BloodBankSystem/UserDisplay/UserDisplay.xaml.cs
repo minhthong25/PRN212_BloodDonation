@@ -46,6 +46,7 @@ namespace BloodBankSystem.UserDisplay
         private void btnRegisterRecipient_Click(object sender, RoutedEventArgs e)
         {
             var recipientDisplay = new RecipientDisplay();
+            recipientDisplay.SetUser(_currentUser);
             recipientDisplay.Show();
             this.Close();
         }

@@ -22,7 +22,49 @@
 
         <!-- Main Content -->
         <Grid Grid.Row="1">
-            <!-- Add your recipient information content here -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1.2*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Cột trái: Nút + DataGrid -->
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <!-- Các nút thao tác -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10" Grid.Row="0">
+                    <Button Content="Làm mới" Width="90" Margin="0,0,10,0" Click="BtnRefresh_Click"/>
+                    <Button Content="Sửa" Width="90" Margin="0,0,10,0" Click="BtnEdit_Click"/>
+                    <Button Content="Xóa" Width="90" Click="BtnDelete_Click"/>
+                </StackPanel>
+                <!-- DataGrid -->
+                <DataGrid x:Name="dgBloodRequests" Grid.Row="1"
+                  AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding RequestId}" Width="Auto"/>
+                        <DataGridTextColumn Header="Người nhận" Binding="{Binding Recipient.RecipientNavigation.FullName}" Width="*" />
+                        <DataGridTextColumn Header="Nhóm máu" Binding="{Binding BloodGroup.GroupName}" Width="*" />
+                        <DataGridTextColumn Header="Số lượng" Binding="{Binding Quantity}" Width="Auto"/>
+                        <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="*" />
+                        <DataGridTextColumn Header="Ngày đăng ký" Binding="{Binding RequestDate, StringFormat=dd/MM/yyyy}" Width="*" />
+                        <DataGridTextColumn Header="Lý do" Binding="{Binding Reason}" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <!-- Form đăng ký nhận máu giữ nguyên -->
+            <StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Top">
+                <TextBlock Text="Đăng ký nhận máu" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+                <TextBlock Text="Nhóm máu:"/>
+                <ComboBox x:Name="cbBloodGroup" Width="300" Margin="0,0,0,10"/>
+                <TextBlock Text="Số lượng:"/>
+                <TextBox x:Name="tbQuantity" Width="300" Margin="0,0,0,10"/>
+                <TextBlock Text="Lý do:"/>
+                <TextBox x:Name="tbReason" Height="300" Width="300" Margin="0,0,0,10"/>
+                <Button Content="Đăng ký nhận máu" Width="200" Click="BtnRegisterBloodRequest_Click" Background="#607D8B" Foreground="White"/>
+            </StackPanel>
         </Grid>
 
         <!-- Return Button -->
