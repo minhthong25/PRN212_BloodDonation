@@ -22,6 +22,9 @@
     <Compile Update="AdminDisplay\EditUserInformation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AdminDisplay\RequestDetailWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="AdminDisplay\UserInformation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

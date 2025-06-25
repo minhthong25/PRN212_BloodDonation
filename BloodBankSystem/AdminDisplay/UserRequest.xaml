@@ -6,7 +6,48 @@
         xmlns:local="clr-namespace:BloodBankSystem.AdminDisplay"
         mc:Ignorable="d"
         Title="UserRequest" Height="450" Width="800" WindowState="Maximized">
-    <Grid>
-        
+    <Grid Margin="20">
+        <StackPanel>
+
+            <TextBlock Text=" Quản lý yêu cầu hiến máu" 
+                       FontSize="22" 
+                       FontWeight="Bold" 
+                       Foreground="RoyalBlue"
+                       Margin="0,0,0,20"
+                       HorizontalAlignment="Center"/>
+
+            <DataGrid x:Name="RequestDataGrid"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      CanUserAddRows="False"
+                      HeadersVisibility="Column"
+                      SelectionMode="Single"
+                      Height="350">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="STT" Binding="{Binding Index}" Width="40"/>
+                    <DataGridTextColumn Header="Mã đơn" Binding="{Binding RequestCode}" Width="120"/>
+                    <DataGridTextColumn Header="Người hiến" Binding="{Binding UserName}" Width="150"/>
+                    <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="100"/>
+                    <DataGridTextColumn Header="Ngày yêu cầu" Binding="{Binding RequestDate}" Width="*"/>
+
+                    <DataGridTemplateColumn  Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Xem chi tiết" 
+                                        Click="ViewDetail_Click"
+                                        Background="Blue" 
+                                        Foreground="White"
+                                        Padding="5,2"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <ComboBox x:Name="SortComboBox" Width="200" SelectionChanged="SortComboBox_SelectionChanged" Margin="10">
+                <ComboBoxItem Content="Ngày gần nhất"/>
+                <ComboBoxItem Content="Ngày xa nhất" />
+            </ComboBox>
+        </StackPanel>
     </Grid>
 </Window>
