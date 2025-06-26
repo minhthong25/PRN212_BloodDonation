@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Repository.Interface;
 using Repository.Models;
 using Repository.Repository;
@@ -17,7 +18,6 @@ namespace Services.Services
         {
             _donorRepository = new GenericRepository<Donor>();
         }
-
 
         public Donor CreateNewDonor(Donor donor)
         {
@@ -92,6 +92,20 @@ namespace Services.Services
             {
                 throw new Exception($"Error deleting donor with ID {id}", ex);
             }
+        }
+
+        public Donor GetDonorByUserId(int userId)
+        {
+            var donor = _donorRepository.Query()
+                .Include(d => d.DonorNavigation)
+                .FirstOrDefault(d => d.DonorNavigation.UserId == userId);
+
+            if (donor == null)
+            {
+                throw new Exception($"No donor found for User ID {userId}");
+            }
+
+            return donor;
         }
     }
 }

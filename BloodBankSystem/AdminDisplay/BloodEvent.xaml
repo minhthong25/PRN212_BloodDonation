@@ -5,27 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BloodBankSystem.AdminDisplay"
         mc:Ignorable="d"
-        Title="Blood Donation Events" Height="450" Width="800" WindowState="Maximized">
-    <Grid Margin="20">
+        Title="Blood Donation Events"
+        Height="789"
+        Width="800"
+        WindowState="Maximized">
+    <Grid Margin="20,20,20,26">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <TextBlock Text="Blood Donation Events" 
-                   FontSize="24" 
-                   FontWeight="Bold" 
+        <TextBlock Text="Blood Donation Events"
+                   FontSize="24"
+                   FontWeight="Bold"
                    Margin="0,0,0,20"
-                   HorizontalAlignment="Center"/>
+                   HorizontalAlignment="Center" />
 
         <!-- Locations Section -->
-        <GroupBox Grid.Row="1" 
-                  Header="Donation Locations" 
-                  Margin="0,0,0,20">
-            <DataGrid x:Name="dgLocations" d:ItemsSource="{d:SampleData ItemCount=2}"
+        <GroupBox Grid.Row="1"
+                  Header=""
+                  Grid.RowSpan="2"
+                  Height="599"
+                  VerticalAlignment="Top">
+            <DataGrid x:Name="dgLocations"
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
                       AlternatingRowBackground="LightGray"
@@ -39,100 +44,64 @@
                       CanUserSortColumns="True"
                       SelectionMode="Single"
                       SelectionUnit="FullRow"
-                      Height="150">
+                      Height="615">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" 
-                                      Binding="{Binding LocationId}" 
-                                      Width="50"/>
-                    <DataGridTextColumn Header="Name" 
-                                      Binding="{Binding Name}" 
-                                      Width="*"/>
-                    <DataGridTextColumn Header="Address" 
-                                      Binding="{Binding Address}" 
-                                      Width="*"/>
-                    <DataGridTemplateColumn Header="Action" Width="100">
+                    <DataGridTextColumn Header="ID"
+                                        Binding="{Binding LocationId}"
+                                        Width="50" />
+                    <DataGridTextColumn Header="Name"
+                                        Binding="{Binding Name}"
+                                        Width="200" />
+                    <DataGridTextColumn Header="Address"
+                                        Binding="{Binding Address}"
+                                        Width="*" />
+                    <DataGridTextColumn Header="Start Date"
+                                        Binding="{Binding EventDate, StringFormat=\{0:dd/MM/yyyy HH:mm\}}"
+                                        Width="120" />
+                    <DataGridTextColumn Header="End Date"
+                                        Binding="{Binding EventEndDate, StringFormat=\{0:dd/MM/yyyy HH:mm\}}"
+                                        Width="120" />
+                    <DataGridTemplateColumn Header="Action"
+                                            Width="100">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Edit" 
+                                <Button Content="Edit"
                                         Click="EditLocation_Click"
                                         Width="80"
                                         Height="30"
                                         Margin="5"
                                         Background="#2196F3"
-                                        Foreground="White"/>
+                                        Foreground="White" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-        </GroupBox>
-
-        <!-- Appointments Section -->
-        <GroupBox Grid.Row="2" 
-                  Header="Donation Appointments" 
-                  Margin="0,0,0,20">
-            <DataGrid x:Name="dgAppointments" d:ItemsSource="{d:SampleData ItemCount=2}"
-                      AutoGenerateColumns="False"
-                      IsReadOnly="True"
-                      AlternatingRowBackground="LightGray"
-                      GridLinesVisibility="All"
-                      BorderBrush="Gray"
-                      BorderThickness="1"
-                      CanUserAddRows="False"
-                      CanUserDeleteRows="False"
-                      CanUserReorderColumns="False"
-                      CanUserResizeRows="False"
-                      CanUserSortColumns="True"
-                      SelectionMode="Single"
-                      SelectionUnit="FullRow">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" 
-                                      Binding="{Binding AppointmentId}" 
-                                      Width="50"/>
-                    <DataGridTextColumn Header="Donor Name" 
-                                      Binding="{Binding Donor.DonorNavigation.FullName}" 
-                                      Width="*"/>
-                    <DataGridTextColumn Header="Location" 
-                                      Binding="{Binding Location.Name}" 
-                                      Width="*"/>
-                    <DataGridTextColumn Header="Date" 
-                                      Binding="{Binding AppointmentDate, StringFormat=dd/MM/yyyy HH:mm}" 
-                                      Width="*"/>
-                    <DataGridTextColumn Header="Status" 
-                                      Binding="{Binding IsCompleted}" 
-                                      Width="*"/>
-                    <DataGridTemplateColumn Header="Action" Width="100">
+                    <DataGridTemplateColumn Header="Delete"
+                                            Width="80">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Edit" 
-                                        Click="EditAppointment_Click"
-                                        Width="80"
-                                        Height="30"
-                                        Margin="5"
-                                        Background="#2196F3"
-                                        Foreground="White"/>
+                                <Button Content="Delete"
+                                        Click="DeleteLocation_Click"
+                                        Background="Crimson"
+                                        Foreground="White"
+                                        Width="60" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+
         </GroupBox>
 
         <!-- Buttons -->
-        <StackPanel Grid.Row="3" 
-                    Orientation="Horizontal" 
-                    HorizontalAlignment="Right" 
+        <StackPanel Grid.Row="3"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
                     Margin="10">
-            <Button x:Name="btnAddLocation" 
-                    Content="Add Location" 
-                    Width="120" 
-                    Margin="5,0" 
-                    Click="btnAddLocation_Click"/>
-            <Button x:Name="btnAddAppointment" 
-                    Content="Add Appointment" 
-                    Width="120" 
-                    Margin="5,0" 
-                    Click="btnAddAppointment_Click"/>
+            <Button x:Name="btnAddLocation"
+                    Content="Add Location"
+                    Width="120"
+                    Margin="5,0"
+                    Click="btnAddLocation_Click" />
         </StackPanel>
     </Grid>
 </Window>

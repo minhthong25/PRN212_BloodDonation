@@ -23,25 +23,35 @@ namespace Services.Services
             _recipientRepository = new GenericRepository<Recipient>();
             _context = new BloodDonationDbContext();
         }
-
-        public List<Recipient> GetAllRecipients()
+        public IEnumerable<Recipient> GetAllRecipients()
         {
-            return _context.Recipients
-                .Include(r => r.RecipientNavigation)
-                .ToList();
+            return _context.Recipients.ToList();
         }
 
-        public Recipient? GetRecipientById(int recipientId)
+        public Recipient? GetRecipientById(int id)
         {
-            return _context.Recipients
-                .Include(r => r.RecipientNavigation)
-                .FirstOrDefault(r => r.RecipientId == recipientId);
+            return _context.Recipients.FirstOrDefault(r => r.RecipientId == id);
         }
 
         public void AddRecipient(Recipient recipient)
         {
             _recipientRepository.Add(recipient);
             _context.SaveChanges();
+        }
+        public void UpdateRecipient(Recipient recipient)
+        {
+            _context.Recipients.Update(recipient);
+            _context.SaveChanges();
+        }
+
+        public void DeleteRecipient(int id)
+        {
+            var recipient = _context.Recipients.FirstOrDefault(r => r.RecipientId == id);
+            if (recipient != null)
+            {
+                _context.Recipients.Remove(recipient);
+                _context.SaveChanges();
+            }
         }
     }
 }

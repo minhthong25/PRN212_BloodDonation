@@ -9,5 +9,6 @@ namespace Services.Interface
         void AddDonor(Donor donor);
         void UpdateDonor(Donor donor);
         void DeleteDonor(int id);
+         Donor GetDonorByUserId(int userId);
     }
 } 

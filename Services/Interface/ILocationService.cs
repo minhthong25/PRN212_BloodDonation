@@ -9,5 +9,6 @@ namespace Services.Interface
         void AddLocation(Location location);
         void UpdateLocation(Location location);
         void DeleteLocation(int id);
+        List<Location> GetUpcomingEvents();
     }
 } 

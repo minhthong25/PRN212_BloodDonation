@@ -1,4 +1,5 @@
-﻿using Repository.Interface;
+﻿using Microsoft.EntityFrameworkCore;
+using Repository.Interface;
 using Repository.Models;
 using Repository.Repository;
 using Services.Interface;
@@ -104,6 +105,20 @@ namespace Services.Services
             string pattern = @"^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵýỷỹ\s]+$";
 
             return Regex.IsMatch(name, pattern);
+        }
+
+        public User? GetUserWithDonor(int userId)
+        {
+            using var context = new BloodDonationDbContext();
+            return context.Users
+                .Include(u => u.Donor)
+                    .ThenInclude(d => d.BloodGroup)
+                .Include(u => u.Donor)
+                    .ThenInclude(d => d.TestResults)
+                .Include(u => u.Donor)
+                    .ThenInclude(d => d.Appointments)
+                        .ThenInclude(a => a.Location)
+                .FirstOrDefault(u => u.UserId == userId);
         }
     }
 }

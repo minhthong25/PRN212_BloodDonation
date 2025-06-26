@@ -20,5 +20,6 @@ namespace Services.Interface
         bool IsPhoneNumberExists(string phoneNumber);
 
         bool ValidName(string name);
+        User? GetUserWithDonor(int userId);
     }
 }

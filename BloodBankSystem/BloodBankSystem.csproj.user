@@ -22,6 +22,12 @@
     <Compile Update="AdminDisplay\EditUserInformation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="AdminDisplay\LocationForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminDisplay\RequestDetailWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="AdminDisplay\UserInformation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -34,7 +40,13 @@
     <Compile Update="UserDisplay\DonorDisplay.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UserDisplay\EditAppointmentWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserDisplay\RecipientDisplay.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserDisplay\TimeSelectionWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UserDisplay\UserInfo.xaml.cs">
@@ -57,6 +69,12 @@
     <Page Update="AdminDisplay\EditUserInformation.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="AdminDisplay\LocationForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminDisplay\RequestDetailWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="AdminDisplay\UserInformation.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -72,7 +90,13 @@
     <Page Update="UserDisplay\DonorDisplay.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UserDisplay\EditAppointmentWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UserDisplay\RecipientDisplay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UserDisplay\TimeSelectionWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UserDisplay\UserInfo.xaml">

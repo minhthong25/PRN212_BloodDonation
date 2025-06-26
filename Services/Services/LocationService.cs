@@ -12,7 +12,7 @@ namespace Services.Services
 {
     public class LocationService : ILocationService
     {
-        private readonly IGenericRepository<Location>  _locationRepository;
+        private readonly IGenericRepository<Location> _locationRepository;
 
         public LocationService()
         {
@@ -21,7 +21,7 @@ namespace Services.Services
 
         public List<Location> GetAllLocations()
         {
-                return _locationRepository.GetAll().ToList(); 
+            return _locationRepository.GetAll().ToList();
         }
 
         public Location? GetLocationById(int id)
@@ -59,7 +59,18 @@ namespace Services.Services
                 if (location == null)
                     throw new ArgumentNullException(nameof(location));
 
-                _locationRepository.Update(location);
+                // Lấy entity từ DB để đảm bảo đang được EF theo dõi
+                var existing = _locationRepository.GetById(location.LocationId);
+                if (existing == null)
+                    throw new Exception($"Location with ID {location.LocationId} not found.");
+
+                // Cập nhật giá trị
+                existing.Name = location.Name;
+                existing.Address = location.Address;
+                existing.EventDate = location.EventDate;
+                existing.EventEndDate = location.EventEndDate;
+
+                // Nếu GenericRepository dùng DbContext tracking, chỉ cần SaveChanges()
                 _locationRepository.SaveChanges();
             }
             catch (Exception ex)
@@ -83,6 +94,15 @@ namespace Services.Services
             {
                 throw new Exception($"Error deleting location with ID {id}", ex);
             }
+        }
+
+        public List<Location> GetUpcomingEvents()
+        {
+            return _locationRepository
+                .GetAll()
+                .Where(l => l.EventDate != null && l.EventDate >= DateTime.Today)
+                .OrderBy(l => l.EventDate)
+                .ToList();
         }
     }
 }

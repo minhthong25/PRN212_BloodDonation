@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Repository.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,10 @@ namespace Services.Interface
 {
     public interface IRecipientService 
     {
-        List<Repository.Models.Recipient> GetAllRecipients();
-        Repository.Models.Recipient? GetRecipientById(int recipientId);
-
-        void AddRecipient(Repository.Models.Recipient recipient);
+        IEnumerable<Recipient> GetAllRecipients();
+        Recipient? GetRecipientById(int id);
+        void AddRecipient(Recipient recipient);
+        void UpdateRecipient(Recipient recipient);
+        void DeleteRecipient(int id);
     }
 }
