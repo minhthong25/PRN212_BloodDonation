@@ -10,7 +10,7 @@ public partial class Location
     public string Name { get; set; } = null!;
 
     public string Address { get; set; } = null!;
-    public DateTime? EventDate { get; set; }  
-    public DateTime? EventEndDate { get; set; }  
+    public DateTime? EventDate { get; set; } // add db 
+    public DateTime? EventEndDate { get; set; }  // add db
     public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 }

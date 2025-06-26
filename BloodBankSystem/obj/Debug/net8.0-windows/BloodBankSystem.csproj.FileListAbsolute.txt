@@ -214,3 +214,7 @@ C:\Users\ADMIN\Source\Repos\PRN212_BloodDonation\BloodBankSystem\obj\Debug\net8.
 C:\Users\ADMIN\Source\Repos\PRN212_BloodDonation\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\TimeSelectionWindow.g.cs
 C:\Users\ADMIN\Source\Repos\PRN212_BloodDonation\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\EditAppointmentWindow.g.cs
 C:\Users\ADMIN\Source\Repos\PRN212_BloodDonation\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\EditAppointmentWindow.baml
+C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\EditAppointmentWindow.baml
+C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\TimeSelectionWindow.baml
+C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\EditAppointmentWindow.g.cs
+C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\obj\Debug\net8.0-windows\UserDisplay\TimeSelectionWindow.g.cs
