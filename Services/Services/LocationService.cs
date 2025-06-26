@@ -67,6 +67,8 @@ namespace Services.Services
                 // Cập nhật giá trị
                 existing.Name = location.Name;
                 existing.Address = location.Address;
+                existing.EventDate = location.EventDate;
+                existing.EventEndDate = location.EventEndDate;
 
                 // Nếu GenericRepository dùng DbContext tracking, chỉ cần SaveChanges()
                 _locationRepository.SaveChanges();

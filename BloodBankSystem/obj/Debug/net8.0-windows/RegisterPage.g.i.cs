@@ -116,7 +116,7 @@ namespace BloodBankSystem {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BloodBankSystem;V1.0.0.0;component/registerpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BloodBankSystem;component/registerpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\RegisterPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

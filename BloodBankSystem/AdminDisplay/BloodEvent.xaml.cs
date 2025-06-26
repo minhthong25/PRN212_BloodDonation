@@ -34,13 +34,7 @@ namespace BloodBankSystem.AdminDisplay
                 {
                     dgLocations.ItemsSource = locations;
                 }
-
-                // Load appointments
-                var appointments = _appointmentService.GetAllAppointments();
-                if (appointments != null && appointments.Any())
-                {
-                    dgAppointments.ItemsSource = appointments;
-                }
+              
             }
             catch (Exception ex)
             {
@@ -60,7 +54,10 @@ namespace BloodBankSystem.AdminDisplay
             {
                 LocationId = selectedLocation.LocationId,
                 Name = selectedLocation.Name,
-                Address = selectedLocation.Address
+                Address = selectedLocation.Address,
+                EventDate = selectedLocation.EventDate,
+                EventEndDate = selectedLocation.EventEndDate
+
             };
 
             var form = new LocationForm(locationClone);
@@ -92,7 +89,7 @@ namespace BloodBankSystem.AdminDisplay
             {
                 LocationId = selectedLocation.LocationId,
                 Name = selectedLocation.Name,
-                Address = selectedLocation.Address
+                Address = selectedLocation.Address              
             };
 
             var form = new LocationForm(locationClone);
