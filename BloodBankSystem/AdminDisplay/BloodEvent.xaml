@@ -102,6 +102,11 @@
                     Width="120"
                     Margin="5,0"
                     Click="btnAddLocation_Click" />
+            <Button x:Name="btnReturnAdmin"
+                    Content="Return to Admin"
+                    Width="120"
+                    Margin="5,0"
+                    Click="btnReturnAdmin_Click" />
         </StackPanel>
     </Grid>
 </Window>

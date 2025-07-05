@@ -8,13 +8,13 @@ C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSyst
 BloodBankSystem
 none
 false
-TRACE;DEBUG;NET;NET8_0;NETCOREAPP
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\minh3\OneDrive\Desktop\prn212\PRN-PROJECT\BloodBankSystem\BloodBankSystem\App.xaml
-18-276374165
+1711092579
 
-231475201390
-246-1588630232
-AdminDisplay\AdminDisplay.xaml;AdminDisplay\BloodEvent.xaml;AdminDisplay\BloodInformations.xaml;AdminDisplay\EditBloodEvent.xaml;AdminDisplay\EditUserInformation.xaml;AdminDisplay\LocationForm.xaml;AdminDisplay\RequestDetailWindow.xaml;AdminDisplay\UserInformation.xaml;AdminDisplay\UserRequest.xaml;HomePage\HomePage.xaml;HomePage\MainWindow.xaml;HomePage\RegisterPage.xaml;UserDisplay\DonorDisplay.xaml;UserDisplay\EditAppointmentWindow.xaml;UserDisplay\RecipientDisplay.xaml;UserDisplay\TimeSelectionWindow.xaml;UserDisplay\UserDisplay.xaml;UserDisplay\UserInfo.xaml;
+22-758204801
+2461000528818
+AdminDisplay\AdminDisplay.xaml;AdminDisplay\BloodEvent.xaml;AdminDisplay\BloodInformations.xaml;AdminDisplay\EditUserInformation.xaml;AdminDisplay\LocationForm.xaml;AdminDisplay\RequestDetailWindow.xaml;AdminDisplay\UserInformation.xaml;AdminDisplay\UserRequest.xaml;HomePage\HomePage.xaml;HomePage\MainWindow.xaml;HomePage\RegisterPage.xaml;UserDisplay\DonorDisplay.xaml;UserDisplay\EditAppointmentWindow.xaml;UserDisplay\RecipientDisplay.xaml;UserDisplay\TimeSelectionWindow.xaml;UserDisplay\UserDisplay.xaml;UserDisplay\UserInfo.xaml;
 
-False
+True
 

@@ -16,9 +16,6 @@
     <Compile Update="AdminDisplay\BloodInformations.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="AdminDisplay\EditBloodEvent.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="AdminDisplay\EditUserInformation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -61,9 +58,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="AdminDisplay\BloodInformations.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="AdminDisplay\EditBloodEvent.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="AdminDisplay\EditUserInformation.xaml">

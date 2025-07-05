@@ -2,22 +2,11 @@
 using Services.Interface;
 using Services.Services;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace BloodBankSystem.AdminDisplay
 {
-
     public partial class RequestDetailWindow : Window
     {
         private readonly BloodRequest _request;
@@ -28,8 +17,43 @@ namespace BloodBankSystem.AdminDisplay
             InitializeComponent();
             _request = request;
             _service = new BloodRequestService();
-            this.DataContext = _request;
+
+            try
+            {
+                if (_request.Recipient == null || _request.Recipient.RecipientNavigation == null || _request.BloodGroup == null)
+                {
+                    var full = _service.GetAllRequestsWithUser()
+                                       .FirstOrDefault(r => r.RequestId == _request.RequestId);
+                    if (full != null)
+                    {
+                        _request.Recipient = full.Recipient;
+                        _request.BloodGroup = full.BloodGroup;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể tải đầy đủ thông tin người đăng ký.\n" + ex.Message);
+            }
+
+            this.DataContext = this;
         }
+
+        public string FullName =>
+            _request.Recipient?.RecipientNavigation?.FullName ?? "[Không có dữ liệu]";
+
+        public string BloodGroup =>
+            _request.BloodGroup?.GroupName ?? "[Không có dữ liệu]";
+
+        public string RequestDateString =>
+            _request.RequestDate.ToString("yyyy-MM-dd");
+
+        public string DisplayStatus =>
+            string.IsNullOrEmpty(_request.Status) || _request.Status == "Pending"
+            ? "Đang chờ"
+            : _request.Status;
+
+        public int RequestId => _request.RequestId;
 
         private void Approve_Click(object sender, RoutedEventArgs e)
         {

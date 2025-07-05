@@ -109,5 +109,13 @@ namespace BloodBankSystem.AdminDisplay
             SetEditMode(false);
             dgUsers.IsReadOnly = true;
         }
+
+        private void btnReturnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            var adminDisplay = new AdminDisplay();
+            adminDisplay.Show();
+            this.Close();
+        }
+
     }
 }

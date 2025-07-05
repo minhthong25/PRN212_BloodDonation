@@ -91,6 +91,11 @@
                     Margin="5,0" 
                     Click="btnCancel_Click"
                     Visibility="Collapsed"/>
+            <Button x:Name="btnReturnAdmin"
+                    Content="Return to Admin"
+                    Width="120"
+                    Margin="5,0"
+                    Click="btnReturnAdmin_Click" />
         </StackPanel>
     </Grid>
 </Window>
