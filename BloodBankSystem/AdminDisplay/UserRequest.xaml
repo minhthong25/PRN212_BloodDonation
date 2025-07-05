@@ -36,6 +36,8 @@
                             <DataTemplate>
                                 <Button Content="Xem chi tiết" 
                                         Click="ViewDetail_Click"
+
+                                        Tag = "{Binding}"
                                         Background="Blue" 
                                         Foreground="White"
                                         Padding="5,2"/>

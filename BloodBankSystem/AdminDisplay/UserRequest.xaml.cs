@@ -59,12 +59,16 @@ namespace BloodBankSystem.AdminDisplay
 
             if (sortType == "Ngày xa nhất")
             {
-                RequestDataGrid.ItemsSource = _requests.OrderBy(r => r.RequestDate).ToList(); 
+
+                RequestDataGrid.ItemsSource = _requests.OrderBy(r => r.RequestDate).ToList();
             }
             else
             {
-                RequestDataGrid.ItemsSource = _requests.OrderByDescending(r => r.RequestDate).ToList(); 
+                RequestDataGrid.ItemsSource = _requests.OrderByDescending(r => r.RequestDate).ToList();
+
+                RequestDataGrid.ItemsSource = _requests.OrderBy(r => r.RequestDate).ToList();
             }
+
         }
 
     }
