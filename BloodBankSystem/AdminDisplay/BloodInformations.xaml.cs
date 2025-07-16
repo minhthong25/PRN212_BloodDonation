@@ -90,5 +90,11 @@ namespace BloodBankSystem.AdminDisplay
             MessageBox.Show("Update Success", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
             LoadAllBloodGroupsTable();
         }
+        private void BtnReturnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            var adminDisplay = new AdminDisplay();
+            adminDisplay.Show();
+            this.Close();
+        }
     }
 }

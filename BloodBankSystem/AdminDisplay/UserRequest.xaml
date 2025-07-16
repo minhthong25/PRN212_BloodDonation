@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BloodBankSystem.AdminDisplay"
         mc:Ignorable="d"
-          Title="UserRequest" Height="450" Width="800" WindowState="Maximized">
+          Title="UserRequest" Height="550" Width="800" WindowState="Maximized">
     <Grid Margin="20">
         <StackPanel>
 
@@ -50,6 +50,13 @@
                 <ComboBoxItem Content="Ngày gần nhất"/>
                 <ComboBoxItem Content="Ngày xa nhất" />
             </ComboBox>
+
+            <Button x:Name="btnReturnAdmin"
+                         Content="Return to Admin"
+                         Width="120"
+                         Margin="5,0"
+                         HorizontalAlignment="Right"
+                         Click="btnReturnAdmin_Click" />
         </StackPanel>
     </Grid>
 </Window>

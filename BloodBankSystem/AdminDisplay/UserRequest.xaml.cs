@@ -71,6 +71,12 @@ namespace BloodBankSystem.AdminDisplay
 
         }
 
+        private void btnReturnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            var adminDisplay = new AdminDisplay();
+            adminDisplay.Show();
+            this.Close();
+        }
     }
 
 }

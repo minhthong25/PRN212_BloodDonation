@@ -74,6 +74,7 @@
                     Content="Cancel" 
                     Width="80"
                     Click="btnCancel_Click"/>
+            
         </StackPanel>
     </Grid>
 </Window>
